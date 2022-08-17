@@ -1,25 +1,22 @@
-# pragma once
-#ifndef __PHONEBOOK_H__
-#define __PHONEBOOK_H__
+#pragma once
+#ifndef __PHONEBOOK_HPP__
+#define __PHONEBOOK_HPP__
 
-#include <iostream>
 #include "contact.hpp"
 
-class phonebook
+class Phonebook
 {
 private:
-	/* data */
+	Contact	contacts[8];
+	int	next_target_index;
+
 public:
-	phonebook(/* args */);
-	~phonebook();
+	Phonebook();
+	~Phonebook();
+	Contact	getContact();
+	int	getCurrentTargetIndex();
+	void	setContact(std::string index, std::string first_name, \
+	std::string last_name, std::string nick_name);
 };
-
-phonebook::phonebook(/* args */)
-{
-}
-
-phonebook::~phonebook()
-{
-}
 
 #endif
