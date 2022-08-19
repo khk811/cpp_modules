@@ -1,71 +1,116 @@
-//#include "phonebook.hpp"
 #include "phonebook.hpp"
 
-Phonebook::Phonebook()
-{
-	this->next_target_index = 0;
+Phonebook::Phonebook(){
+	this->curr_index = 0;
+	this->max_index = 0;
 }
 
-Phonebook::~Phonebook()
-{
+Phonebook::~Phonebook(){
 }
 
-Contact	Phonebook::getContact()
-{
+Contact	Phonebook::getContact(){
 	return this->contacts[0];
 }
 
-int	Phonebook::getCurrentTargetIndex()
-{
-	return this->next_target_index;
+std::string	Phonebook::getUserInputString(std::string format_string){
+	std::string	user_input;
+
+	std::cout << format_string;
+	std::getline(std::cin, user_input);
+	return user_input;
 }
 
-void	Phonebook::setContact(std::string index, std::string first_name, \
-std::string last_name, std::string nick_name)
-{
-	Contact	*target_contact;
+int	Phonebook::getUserInputIndex() {
+	std::string user_input;
+	int			input_index;
 
-	target_contact = &(this->contacts[this->next_target_index]);
-	// if (this->next_target_index < 8) {
-		// target_contact = &(this->contacts[this->next_target_index]);
-	// }
-	if (this->next_target_index < 7) {
-		this->next_target_index += 1;
-	}
-	else if (this->next_target_index == 7) {
-		this->next_target_index = 0;
-	}
-	target_contact->setIndex(index);
-	target_contact->setFirstName(first_name);
-	target_contact->setLastName(last_name);
-	target_contact->setNickName(nick_name);
+	user_input = this->getUserInputString("Enter the index: ");
+	if (user_input.length() > 2 || !isdigit(user_input[0]))
+		return (-1);
+	input_index = user_input[0] - '0';
+	return input_index;
 }
 
-int	main(void)
-{
-	Phonebook	the_phonebook;
-	std::string	index;
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nick_name;
+void	Phonebook::updateCurrentIndex() {
+	if (this->curr_index < 7)
+		this->curr_index++;
+	else if (this->curr_index == 7)
+		this->curr_index = 0;
+}
 
-	std::cout << "index: ";
-	std::getline(std::cin, index);
-	if (index.length() > 1 || (index[0] == '8' || index[0] == '9')) {
-		std::cout << "invalid input index" << std::endl;
-		return 1;
+void	Phonebook::updateMaxIndex() {
+	if (this->max_index < 8)
+		this->max_index++;
+	else
+		return ;
+}
+
+void	Phonebook::addContact(){
+	Contact*	target;
+
+	target = &(this->contacts[this->curr_index]);
+	target->setFirstName(this->getUserInputString("First name: "));
+	target->setLastName(this->getUserInputString("Last name: "));
+	target->setNickName(this->getUserInputString("Nick name: "));
+	target->setPhoneNumber(this->getUserInputString("Phone Number: "));
+	target->setDarkestSecret(this->getUserInputString("Darkest Secret: "));
+	this->updateCurrentIndex();
+	this->updateMaxIndex();
+}
+
+void	Phonebook::printContactFields(int index) {
+	std::cout << std::setw(10);
+	std::cout << index;
+	std::cout << "|";
+	std::cout << std::setw(10);
+	if (this->contacts[index].getFirstName().length() > 10)
+		std::cout << this->contacts[index].getFirstName().substr(0, 9) + ".";
+	else
+		std::cout << this->contacts[index].getFirstName();
+	std::cout << "|";
+	std::cout << std::setw(10);
+	if (this->contacts[index].getLastName().length() > 10)
+		std::cout << this->contacts[index].getLastName().substr(0, 9) + ".";
+	else
+		std::cout << this->contacts[index].getLastName();
+	std::cout << "|";
+	std::cout << std::setw(10);
+	if (this->contacts[index].getNickName().length() > 10)
+		std::cout << this->contacts[index].getNickName().substr(0, 9) + ".";
+	else
+		std::cout << this->contacts[index].getNickName();
+	std::cout << std::endl;
+}
+
+void	Phonebook::searchContact(){
+	for (int index = 0; index < this->max_index; index++) {
+		printContactFields(index);
 	}
-	std::cout << "first name: ";
-	std::getline(std::cin, first_name);
-	std::cout << "last name: ";
-	std::getline(std::cin, last_name);
-	std::cout << "nick name: ";
-	std::getline(std::cin, nick_name);
-	the_phonebook.setContact(index, first_name, last_name, nick_name);
-	std::cout << the_phonebook.getContact().getIndex() << std::endl;
-	std::cout << the_phonebook.getContact().getFirstName() << std::endl;
-	std::cout << the_phonebook.getContact().getLastName() << std::endl;
-	std::cout << the_phonebook.getContact().getNickName() << std::endl;
-	std::cout << "the next target index: " << the_phonebook.getCurrentTargetIndex() << std::endl;
-	return (0);
+	findContact();
+	return ;
+}
+
+void	Phonebook::findContact(){
+	int	target_index;
+
+	target_index = getUserInputIndex();
+	if (target_index == -1 || target_index > this->max_index) {
+		std::cout << "Invalid index. Please try again." << std::endl;
+		return ;
+	}
+	std::cout << this->contacts[target_index].getFirstName() << std::endl;
+	std::cout << this->contacts[target_index].getLastName() << std::endl;
+	std::cout << this->contacts[target_index].getNickName() << std::endl;
+	std::cout << this->contacts[target_index].getPhoneNumber() << std::endl;
+	std::cout << this->contacts[target_index].getDarkestSecret() << std::endl;
+}
+
+std::string	Phonebook::getUserCommand() {
+	std::string	user_command;
+
+	std::cout << "<< Available Commands >>" << std::endl;
+	std::cout << "|  ADD, SEARCH, EXIT   |" << std::endl;
+	std::cout << "Enter the Command: ";
+	std::getline(std::cin, user_command);
+	return user_command;
 }

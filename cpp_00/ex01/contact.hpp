@@ -7,7 +7,6 @@
 class Contact
 {
 private:
-	std::string	index;
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nick_name;
@@ -17,11 +16,11 @@ private:
 public:
 	Contact();
 	~Contact();
-	std::string	getIndex();
 	std::string	getFirstName();
 	std::string	getLastName();
 	std::string	getNickName();
-	void	setIndex(std::string index);
+	std::string	getPhoneNumber();
+	std::string	getDarkestSecret();
 	void	setFirstName(std::string first_name);
 	void	setLastName(std::string last_name);
 	void	setNickName(std::string nick_name);
