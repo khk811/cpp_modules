@@ -1,8 +1,9 @@
 #include "phonebook.hpp"
 
+int Phonebook::filled_contact_num = 0;
+
 Phonebook::Phonebook(){
 	this->curr_index = 0;
-	this->max_index = 0;
 }
 
 Phonebook::~Phonebook(){
@@ -24,7 +25,7 @@ int	Phonebook::getUserInputIndex() {
 	std::string user_input;
 	int			input_index;
 
-	user_input = this->getUserInputString("Enter the index: ");
+	user_input = this->getUserInputString("\nEnter the index: ");
 	if (user_input.length() > 2 || !isdigit(user_input[0]))
 		return (-1);
 	input_index = user_input[0] - '0';
@@ -36,13 +37,8 @@ void	Phonebook::updateCurrentIndex() {
 		this->curr_index++;
 	else if (this->curr_index == 7)
 		this->curr_index = 0;
-}
-
-void	Phonebook::updateMaxIndex() {
-	if (this->max_index < 8)
-		this->max_index++;
-	else
-		return ;
+	if (this->filled_contact_num < 9)
+		(this->filled_contact_num)++;
 }
 
 void	Phonebook::addContact(){
@@ -55,7 +51,6 @@ void	Phonebook::addContact(){
 	target->setPhoneNumber(this->getUserInputString("Phone Number: "));
 	target->setDarkestSecret(this->getUserInputString("Darkest Secret: "));
 	this->updateCurrentIndex();
-	this->updateMaxIndex();
 }
 
 void	Phonebook::printContactFields(int index) {
@@ -83,7 +78,7 @@ void	Phonebook::printContactFields(int index) {
 }
 
 void	Phonebook::searchContact(){
-	for (int index = 0; index < this->max_index; index++) {
+	for (int index = 0; index < this->filled_contact_num; index++) {
 		printContactFields(index);
 	}
 	findContact();
@@ -94,7 +89,7 @@ void	Phonebook::findContact(){
 	int	target_index;
 
 	target_index = getUserInputIndex();
-	if (target_index == -1 || target_index > this->max_index) {
+	if (target_index == -1 || target_index > (this->filled_contact_num - 1)) {
 		std::cout << "Invalid index. Please try again." << std::endl;
 		return ;
 	}
@@ -108,7 +103,7 @@ void	Phonebook::findContact(){
 std::string	Phonebook::getUserCommand() {
 	std::string	user_command;
 
-	std::cout << "<< Available Commands >>" << std::endl;
+	std::cout << "\n<< Available Commands >>" << std::endl;
 	std::cout << "|  ADD, SEARCH, EXIT   |" << std::endl;
 	std::cout << "Enter the Command: ";
 	std::getline(std::cin, user_command);

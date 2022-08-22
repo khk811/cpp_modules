@@ -11,16 +11,16 @@ class Phonebook
 private:
 	Contact	contacts[8];
 	int	curr_index;
-	int	max_index;
 
 public:
+	static int	filled_contact_num;
+
 	Phonebook();
 	~Phonebook();
 	Contact	getContact();
 	std::string	getUserInputString(std::string format_string);
 	int		getUserInputIndex();
 	void	updateCurrentIndex();
-	void	updateMaxIndex();
 	void	addContact();
 	void	printContactFields(int index);
 	void	searchContact();
