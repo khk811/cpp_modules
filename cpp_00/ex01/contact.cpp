@@ -55,3 +55,16 @@ void	Contact::setDarkestSecret(std::string secret)
 {
 	this->darkest_secret = secret;
 }
+
+bool	Contact::isValidContact()
+{
+	std::string	phoneNum;
+
+	phoneNum = this->getPhoneNumber();
+	for (unsigned int i = 0; i < phoneNum.length(); i++)
+	{
+		if (!isdigit(phoneNum[i]))
+			return (false);
+	}
+	return (true);
+}

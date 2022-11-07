@@ -21,7 +21,7 @@ public:
 	std::string	getUserInputString(std::string format_string);
 	int		getUserInputIndex();
 	void	updateCurrentIndex();
-	void	addContact();
+	bool	addContact();
 	void	printContactFields(int index);
 	void	searchContact();
 	void	findContact();

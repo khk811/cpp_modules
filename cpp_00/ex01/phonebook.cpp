@@ -18,6 +18,13 @@ std::string	Phonebook::getUserInputString(std::string format_string){
 
 	std::cout << format_string;
 	std::getline(std::cin, user_input);
+	while (user_input == "")
+	{
+		if (std::cin.eof())
+			break ;
+		std::cout << format_string;
+		std::getline(std::cin, user_input);
+	}
 	return user_input;
 }
 
@@ -26,7 +33,7 @@ int	Phonebook::getUserInputIndex() {
 	int			input_index;
 
 	user_input = this->getUserInputString("\nEnter the index: ");
-	if (user_input.length() > 2 || !isdigit(user_input[0]))
+	if (user_input.length() >= 2 || !isdigit(user_input[0]))
 		return (-1);
 	input_index = user_input[0] - '0';
 	return input_index;
@@ -37,20 +44,33 @@ void	Phonebook::updateCurrentIndex() {
 		this->curr_index++;
 	else if (this->curr_index == 7)
 		this->curr_index = 0;
-	if (this->filled_contact_num < 9)
+	if (this->filled_contact_num < 8)
 		(this->filled_contact_num)++;
 }
 
-void	Phonebook::addContact(){
-	Contact*	target;
+bool	Phonebook::addContact(){
+	Contact	target;
 
-	target = &(this->contacts[this->curr_index]);
-	target->setFirstName(this->getUserInputString("First name: "));
-	target->setLastName(this->getUserInputString("Last name: "));
-	target->setNickName(this->getUserInputString("Nick name: "));
-	target->setPhoneNumber(this->getUserInputString("Phone Number: "));
-	target->setDarkestSecret(this->getUserInputString("Darkest Secret: "));
+	target.setFirstName(this->getUserInputString("First name: "));
+	if (std::cin.eof())
+		return (false);
+	target.setLastName(this->getUserInputString("Last name: "));
+	if (std::cin.eof())
+		return (false);
+	target.setNickName(this->getUserInputString("Nick name: "));
+	if (std::cin.eof())
+		return (false);
+	target.setPhoneNumber(this->getUserInputString("Phone Number: "));
+	if (std::cin.eof())
+		return (false);
+	target.setDarkestSecret(this->getUserInputString("Darkest Secret: "));
+	if (std::cin.eof())
+		return (false);
+	if (target.isValidContact() == false)
+		return (false);
+	this->contacts[this->curr_index] = target;
 	this->updateCurrentIndex();
+	return (true);
 }
 
 void	Phonebook::printContactFields(int index) {
@@ -78,6 +98,11 @@ void	Phonebook::printContactFields(int index) {
 }
 
 void	Phonebook::searchContact(){
+	if (this->filled_contact_num == 0)
+	{
+		std::cout << "The contact is empty. Please enter the contact first." << std::endl;
+		return ;
+	}
 	for (int index = 0; index < this->filled_contact_num; index++) {
 		printContactFields(index);
 	}
