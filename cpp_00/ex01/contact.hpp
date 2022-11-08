@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __CONTACT_HPP__
 #define __CONTACT_HPP__
 

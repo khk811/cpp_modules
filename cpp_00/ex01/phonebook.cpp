@@ -9,10 +9,6 @@ Phonebook::Phonebook(){
 Phonebook::~Phonebook(){
 }
 
-Contact	Phonebook::getContact(){
-	return this->contacts[0];
-}
-
 std::string	Phonebook::getUserInputString(std::string format_string){
 	std::string	user_input;
 
