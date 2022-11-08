@@ -6,7 +6,7 @@ int	main(int argc, char **argv){
 		for (int i = 1; i < argc; i++){
 			std::string	str(argv[i]);
 			for (size_t j = 0; j < str.length(); j++){
-				result += toupper(str[j]);
+				result += std::toupper(str[j]);
 			}
 		}
 	}
