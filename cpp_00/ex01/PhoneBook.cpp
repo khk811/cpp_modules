@@ -1,15 +1,15 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
-int Phonebook::filled_contact_num = 0;
+int PhoneBook::filled_contact_num = 0;
 
-Phonebook::Phonebook(){
+PhoneBook::PhoneBook(){
 	this->curr_index = 0;
 }
 
-Phonebook::~Phonebook(){
+PhoneBook::~PhoneBook(){
 }
 
-std::string	Phonebook::getUserInputString(std::string format_string){
+std::string	PhoneBook::getUserInputString(std::string format_string){
 	std::string	user_input;
 
 	std::cout << format_string;
@@ -24,7 +24,7 @@ std::string	Phonebook::getUserInputString(std::string format_string){
 	return user_input;
 }
 
-int	Phonebook::getUserInputIndex() {
+int	PhoneBook::getUserInputIndex() {
 	std::string user_input;
 	int			input_index;
 
@@ -35,7 +35,7 @@ int	Phonebook::getUserInputIndex() {
 	return input_index;
 }
 
-void	Phonebook::updateCurrentIndex() {
+void	PhoneBook::updateCurrentIndex() {
 	if (this->curr_index < 7)
 		this->curr_index++;
 	else if (this->curr_index == 7)
@@ -44,7 +44,7 @@ void	Phonebook::updateCurrentIndex() {
 		(this->filled_contact_num)++;
 }
 
-bool	Phonebook::addContact(){
+bool	PhoneBook::addContact(){
 	Contact	target;
 
 	target.setFirstName(this->getUserInputString("First name: "));
@@ -69,7 +69,7 @@ bool	Phonebook::addContact(){
 	return (true);
 }
 
-void	Phonebook::printContactFields(int index) {
+void	PhoneBook::printContactFields(int index) {
 	std::cout << std::setw(10);
 	std::cout << index;
 	std::cout << "|";
@@ -93,7 +93,7 @@ void	Phonebook::printContactFields(int index) {
 	std::cout << std::endl;
 }
 
-void	Phonebook::searchContact(){
+void	PhoneBook::searchContact(){
 	if (this->filled_contact_num == 0)
 	{
 		std::cout << "The contact is empty. Please enter the contact first." << std::endl;
@@ -106,7 +106,7 @@ void	Phonebook::searchContact(){
 	return ;
 }
 
-void	Phonebook::findContact(){
+void	PhoneBook::findContact(){
 	int	target_index;
 
 	target_index = getUserInputIndex();
@@ -121,7 +121,7 @@ void	Phonebook::findContact(){
 	std::cout << this->contacts[target_index].getDarkestSecret() << std::endl;
 }
 
-std::string	Phonebook::getUserCommand() {
+std::string	PhoneBook::getUserCommand() {
 	std::string	user_command;
 
 	std::cout << "\n<< Available Commands >>" << std::endl;

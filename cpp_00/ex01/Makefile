@@ -1,6 +1,5 @@
 TARGET = phonebook
-SRCS = phonebook.cpp contact.cpp main.cpp
-# SRCS = phonebook.cpp
+SRCS = PhoneBook.cpp Contact.cpp main.cpp
 
 include ../template.mk
 

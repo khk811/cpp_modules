@@ -2,9 +2,9 @@
 #define __PHONEBOOK_HPP__
 
 #include <iomanip>
-#include "contact.hpp"
+#include "Contact.hpp"
 
-class Phonebook
+class PhoneBook
 {
 private:
 	Contact	contacts[8];
@@ -19,8 +19,8 @@ private:
 public:
 	static int	filled_contact_num;
 
-	Phonebook();
-	~Phonebook();
+	PhoneBook();
+	~PhoneBook();
 	bool	addContact();
 	void	searchContact();
 	std::string	getUserCommand();
