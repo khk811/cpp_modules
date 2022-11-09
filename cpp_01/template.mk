@@ -34,4 +34,4 @@ $(addprefix $(OBJ_DIR), %.o): %.cpp
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(TARGET) : $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ $(CFLAGS)
