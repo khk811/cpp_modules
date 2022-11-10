@@ -57,6 +57,15 @@ bool	whoSed::hasValidVariables()
 		std::cout << "Error: Empty target string" << std::endl;
 		return (false);
 	}
+
+	std::ifstream	ifs(this->getFileName());
+
+	if (ifs.good() == false)
+	{
+		std::cout << "Error: Cannot open infile" << std::endl;
+		ifs.close();
+		return (false);
+	}
 	return (true);
 }
 
