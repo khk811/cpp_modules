@@ -1,4 +1,4 @@
-TARGET = this_is_brain
+TARGET = hi_this_is_brain
 SRCS = main.cpp
 
 include ../template.mk
