@@ -30,6 +30,10 @@ void	Harl::error() {
 	std::cout << std::endl;
 }
 
+void	Harl::defaultComplain() {
+	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+}
+
 Harl::level	Harl::checkInputLevel(std::string level) {
 	if (level == "DEBUG")
 		return (LEVEL_DEBUG);
@@ -59,7 +63,7 @@ void	Harl::complain(std::string level) {
 		this->error();
 		break;
 	default:
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		this->defaultComplain();
 		break;
 	}
 }

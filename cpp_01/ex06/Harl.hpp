@@ -15,16 +15,17 @@ private:
 		DEFAULT,
 	};
 
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
+	void		debug();
+	void		info();
+	void		warning();
+	void		error();
+	void		defaultComplain();
 	enum level	checkInputLevel(std::string level);
 
 public:
 	Harl();
 	~Harl();
-	void	complain(std::string level);
+	void		complain(std::string level);
 };
 
 #endif
