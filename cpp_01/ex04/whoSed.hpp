@@ -20,11 +20,11 @@ public:
 	whoSed();
 	~whoSed();
 
-	bool	hasValidVariables();
-	void	putResultLineInFile();
-	void	setFileName(std::string name);
-	void	setTargetString(std::string target);
-	void	setReplaceString(std::string replace);
+	bool		hasValidVariables();
+	void		putResultLineInFile();
+	void		setFileName(std::string name);
+	void		setTargetString(std::string target);
+	void		setReplaceString(std::string replace);
 };
 
 #endif
