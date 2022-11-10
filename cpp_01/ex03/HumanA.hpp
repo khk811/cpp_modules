@@ -3,22 +3,19 @@
 
 #include "Weapon.hpp"
 
-class HumanA {
-
+class HumanA
+{
 private:
-
-	Weapon&	weapon;
+	Weapon&		weapon;
 	std::string	name;
 
 	std::string	getName();
 	Weapon&		getWeapon();
 
 public:
-
 	HumanA(std::string name, Weapon& wp);
 	~HumanA();
 	void		attack();
-
 };
 
 #endif

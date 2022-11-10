@@ -3,10 +3,9 @@
 
 #include "Weapon.hpp"
 
-class HumanB {
-
+class HumanB
+{
 private:
-
 	Weapon*		weapon;
 	std::string	name;
 
@@ -14,7 +13,6 @@ private:
 	Weapon*		getWeapon();
 
 public:
-
 	HumanB(std::string name);
 	~HumanB();
 	void		setWeapon(Weapon& weapon);

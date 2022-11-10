@@ -21,7 +21,6 @@ private:
 	void	error(void);
 	enum level	checkInputLevel(std::string level);
 
-
 public:
 	Harl();
 	~Harl();
