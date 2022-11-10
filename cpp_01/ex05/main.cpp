@@ -1,11 +1,12 @@
 #include "Harl.hpp"
 
-int	main() {
-	Harl	harl_whatever;
+int	main(int argc, char **argv) {
+	Harl		harl_whatever;
+	std::string	level;
 
-	harl_whatever.complain("ERROR");
-	harl_whatever.complain("INFO");
-	harl_whatever.complain("DEBUG");
-	harl_whatever.complain("INFO");
+	if (argc == 2) {
+		level = argv[1];
+		harl_whatever.complain(level);
+	}
 	return (0);
 }

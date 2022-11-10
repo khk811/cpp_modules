@@ -23,10 +23,8 @@ std::string	whoSed::replaceTargetString(std::string single) {
 	size_t		found = single.find(this->getTargetString(), index);
 	std::string	ret;
 
-	if (found != std::string::npos)
-	{
-		while (found != std::string::npos)
-		{
+	if (found != std::string::npos) {
+		while (found != std::string::npos) {
 			ret.append(single.substr(index, found - index));
 			ret.append(this->getReplaceString());
 			index = found + this->getTargetString().length();
@@ -40,21 +38,18 @@ std::string	whoSed::replaceTargetString(std::string single) {
 }
 
 bool	whoSed::hasValidVariables() {
-	if (this->getFileName() == "")
-	{
+	if (this->getFileName() == "") {
 		std::cout << "Error: Empty infile name" << std::endl;
 		return false;
 	}
-	else if (this->getTargetString() == "")
-	{
+	else if (this->getTargetString() == "") {
 		std::cout << "Error: Empty target string" << std::endl;
 		return false;
 	}
 
 	std::ifstream	ifs(this->getFileName());
 
-	if (ifs.good() == false)
-	{
+	if (ifs.good() == false) {
 		std::cout << "Error: Cannot open infile" << std::endl;
 		ifs.close();
 		return false;
@@ -67,8 +62,7 @@ void	whoSed::putResultLineInFile() {
 	std::ofstream	ofs(this->getFileName().append(".replace"));
 	std::string		single_line;
 
-	while (ifs.eof() == false)
-	{
+	while (ifs.eof() == false) {
 		std::getline(ifs, single_line);
 		if (ifs.eof() == true)
 			break ;

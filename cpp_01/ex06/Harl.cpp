@@ -48,11 +48,10 @@ Harl::level	Harl::checkInputLevel(std::string level) {
 }
 
 void	Harl::complain(std::string level) {
-	Harl::level	targetLevel;
+	Harl::level	target_level;
 
-	targetLevel = this->checkInputLevel(level);
-	switch (targetLevel)
-	{
+	target_level = this->checkInputLevel(level);
+	switch (target_level) {
 	case LEVEL_DEBUG:
 		this->debug();
 	case LEVEL_INFO:
