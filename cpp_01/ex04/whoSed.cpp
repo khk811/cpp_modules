@@ -45,14 +45,23 @@ std::string	whoSed::replaceTargetString(std::string single)
 		return (single);
 }
 
-int	whoSed::putResultLineInFile()
+bool	whoSed::hasValidVariables()
 {
 	if (this->getFileName() == "")
 	{
-		std::cout << "Error: infile name is empty" << std::endl;
-		return (1);
+		std::cout << "Error: Empty infile name" << std::endl;
+		return (false);
 	}
+	else if (this->getTargetString() == "")
+	{
+		std::cout << "Error: Empty target string" << std::endl;
+		return (false);
+	}
+	return (true);
+}
 
+void	whoSed::putResultLineInFile()
+{
 	std::ifstream	ifs(this->getFileName());
 	std::ofstream	ofs(this->getFileName().append(".replace"));
 	std::string		single_line;
@@ -67,7 +76,6 @@ int	whoSed::putResultLineInFile()
 	}
 	ifs.close();
 	ofs.close();
-	return (0);
 }
 
 void	whoSed::setFileName(std::string name)

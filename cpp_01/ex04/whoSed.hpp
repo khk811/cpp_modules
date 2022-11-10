@@ -19,7 +19,9 @@ private:
 public:
 	whoSed();
 	~whoSed();
-	int		putResultLineInFile();
+
+	bool	hasValidVariables();
+	void	putResultLineInFile();
 	void	setFileName(std::string name);
 	void	setTargetString(std::string target);
 	void	setReplaceString(std::string replace);
