@@ -5,8 +5,8 @@ Zombie::Zombie() {
 }
 
 Zombie::~Zombie() {
-	std::cout << this->name;
-	std::cout << " is dying by the gun shot. Goodbye!" << std::endl;
+	std::cout << this->getZombieName();
+	std::cout << " was shot and killed! Goodbye!" << std::endl;
 }
 
 std::string	Zombie::getZombieName() {
