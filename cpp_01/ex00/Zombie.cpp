@@ -4,20 +4,15 @@ Zombie::Zombie() {
 	std::cout << "OMG! THE ZOMBIE!!" << std::endl;
 }
 
-Zombie::~Zombie() {
-	std::cout << this->getZombieName();
-	std::cout << " was shot and killed! Goodbye!" << std::endl;
-}
-
-std::string	Zombie::getZombieName() {
-	return this->name;
-}
-
-void	Zombie::setZombieName(std::string name) {
+Zombie::Zombie(std::string name) {
+	std::cout << "OMG! THE ZOMBIE!!" << std::endl;
 	this->name = name;
 }
 
+Zombie::~Zombie() {
+	std::cout << this->name << " was shot and killed! Goodbye!" << std::endl;
+}
+
 void	Zombie::announce() {
-	std::cout << this->getZombieName();
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
