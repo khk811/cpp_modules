@@ -12,7 +12,7 @@ private:
 		LEVEL_INFO,
 		LEVEL_WARNING,
 		LEVEL_ERROR,
-		DEFAULT,
+		DEFAULT
 	};
 
 	void		debug();
