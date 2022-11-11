@@ -9,9 +9,6 @@ private:
 	Weapon*		weapon;
 	std::string	name;
 
-	std::string	getName();
-	Weapon*		getWeapon();
-
 public:
 	HumanB(std::string name);
 	~HumanB();
