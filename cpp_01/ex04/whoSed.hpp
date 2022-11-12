@@ -11,9 +11,6 @@ private:
 	std::string	target_string;
 	std::string	to_replace;
 
-	std::string	getFileName();
-	std::string	getTargetString();
-	std::string	getReplaceString();
 	std::string	replaceTargetString(std::string single);
 
 public:
