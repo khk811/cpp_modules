@@ -111,23 +111,19 @@ bool	Fixed::operator!=(Fixed const& src) {
 }
 
 Fixed	Fixed::operator+(Fixed const& src) {
-	this->fixed_point += src.fixed_point;
-	return *this;
+	return Fixed(this->toFloat() + src.toFloat());
 }
 
 Fixed	Fixed::operator-(Fixed const& src) {
-	this->fixed_point -= src.fixed_point;
-	return *this;
+	return Fixed(this->toFloat() - src.toFloat());
 }
 
 Fixed	Fixed::operator*(Fixed const& src) {
-	this->fixed_point = roundf((this->toFloat() * src.toFloat()) * 256);
-	return *this;
+	return Fixed(this->toFloat() * src.toFloat());
 }
 
 Fixed	Fixed::operator/(Fixed const& src) {
-	this->fixed_point = roundf((this->toFloat() / src.toFloat()) * 256);
-	return *this;
+	return Fixed(this->toFloat() / src.toFloat());
 }
 
 Fixed&	Fixed::operator++(void) {
