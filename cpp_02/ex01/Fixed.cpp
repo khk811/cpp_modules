@@ -12,31 +12,32 @@ Fixed::Fixed(const Fixed& fix) {
 
 Fixed::Fixed(const int src) {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixed_point = src << this->fraction_bits;
+	this->fixed_point = src * 256;
 }
 
 Fixed::Fixed(const float src) {
 	std::cout << "Float constructor called" << std::endl;
-	this->fixed_point = roundf(src);
+	// this->fixed_point = roundf(src);
 
-	float	src_frac = src - roundf(src);
-	std::cout << src_frac << std::endl;
-	float	subtrac = 0.5;
+	// float	src_frac = src - roundf(src);
+	// std::cout << src_frac << std::endl;
+	// float	subtrac = 0.5;
 
-	for (int i = 0; i < this->fraction_bits; i++)
-	{
-		// std::cout << subtrac << std::endl;
-		if (src_frac - subtrac >= 0) {
-			this->fixed_point  = this->fixed_point << 1;
-			this->fixed_point += 1;
-			src_frac = src_frac - subtrac;
-			subtrac *= 0.5;
-		}
-		else {
-			this->fixed_point  = this->fixed_point << 1;
-			subtrac *= 0.5;
-		}
-	}
+	// for (int i = 0; i < this->fraction_bits; i++)
+	// {
+	// 	// std::cout << subtrac << std::endl;
+	// 	if (src_frac - subtrac >= 0) {
+	// 		this->fixed_point  = this->fixed_point << 1;
+	// 		this->fixed_point += 1;
+	// 		src_frac = src_frac - subtrac;
+	// 		subtrac *= 0.5;
+	// 	}
+	// 	else {
+	// 		this->fixed_point  = this->fixed_point << 1;
+	// 		subtrac *= 0.5;
+	// 	}
+	// }
+	this->fixed_point = roundf(src * 256);
 }
 
 Fixed::~Fixed() {
@@ -57,7 +58,10 @@ float	Fixed::toFloat(void) const {
 	float	ret = 0;
 	float	add = 0.00390625;
 	int		raw_bit = this->fixed_point;
+	bool	is_negative = false;
 
+	if (raw_bit < 0)
+		is_negative = true;
 	for (int i = 0; i < 32; i++) {
 		if ((raw_bit & 1) == 1) {
 			ret += add;
@@ -68,11 +72,13 @@ float	Fixed::toFloat(void) const {
 		}
 		raw_bit = raw_bit >> 1;
 	}
+	if (is_negative == true)
+		ret *= -1;
 	return ret;
 }
 
 int		Fixed::toInt(void) const {
-	return (this->fixed_point >> this->fraction_bits);
+	return (this->fixed_point / 256);
 }
 
 Fixed&	Fixed::operator=(Fixed const& src) {
