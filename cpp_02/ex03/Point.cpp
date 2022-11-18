@@ -21,9 +21,5 @@ Fixed const&	Point::getFixedPointY(void) const {
 }
 
 Point&	Point::operator=(Point const& src) {
-	if (this != &src) {
-		Point	temp(src.x, src.y);
-		*this = temp;
-	}
 	return *this;
 }
