@@ -4,17 +4,19 @@
 #include <iostream>
 #include <cmath>
 
+#define	FIX_EPSILON	0.00390625;
+
 class Fixed
 {
 private:
 	int					fixed_point;
-	static const int	fraction_bits = 8;
+	static int const	fraction_bits = 8;
 
 public:
 	Fixed();
-	Fixed(const Fixed& fix);
-	Fixed(const int src);
-	Fixed(const float src);
+	Fixed(Fixed const& src);
+	Fixed(int const src);
+	Fixed(float const src);
 	~Fixed();
 	int					getRawBits(void) const;
 	void				setRawBits(int const raw);
@@ -24,6 +26,6 @@ public:
 	Fixed&				operator=(Fixed const& src);
 };
 
-std::ostream&		operator<<(std::ostream& ostrm, const Fixed& src);
+std::ostream&		operator<<(std::ostream& ostrm, Fixed const& src);
 
 #endif

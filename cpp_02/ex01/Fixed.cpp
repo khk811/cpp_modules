@@ -5,39 +5,19 @@ Fixed::Fixed() {
 	this->fixed_point = 0;
 }
 
-Fixed::Fixed(const Fixed& fix) {
+Fixed::Fixed(Fixed const& src) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = fix;
+	*this = src;
 }
 
-Fixed::Fixed(const int src) {
+Fixed::Fixed(int const src) {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixed_point = src * 256;
+	this->fixed_point = src * (1 << this->fraction_bits);
 }
 
-Fixed::Fixed(const float src) {
+Fixed::Fixed(float const src) {
 	std::cout << "Float constructor called" << std::endl;
-	// this->fixed_point = roundf(src);
-
-	// float	src_frac = src - roundf(src);
-	// std::cout << src_frac << std::endl;
-	// float	subtrac = 0.5;
-
-	// for (int i = 0; i < this->fraction_bits; i++)
-	// {
-	// 	// std::cout << subtrac << std::endl;
-	// 	if (src_frac - subtrac >= 0) {
-	// 		this->fixed_point  = this->fixed_point << 1;
-	// 		this->fixed_point += 1;
-	// 		src_frac = src_frac - subtrac;
-	// 		subtrac *= 0.5;
-	// 	}
-	// 	else {
-	// 		this->fixed_point  = this->fixed_point << 1;
-	// 		subtrac *= 0.5;
-	// 	}
-	// }
-	this->fixed_point = roundf(src * 256);
+	this->fixed_point = roundf(src * (1 << this->fraction_bits));
 }
 
 Fixed::~Fixed() {
@@ -56,7 +36,7 @@ void	Fixed::setRawBits(int const src) {
 
 float	Fixed::toFloat(void) const {
 	float	ret = 0;
-	float	add = 0.00390625;
+	float	add = FIX_EPSILON;
 	int		raw_bit = this->fixed_point;
 	bool	is_negative = false;
 
@@ -78,7 +58,7 @@ float	Fixed::toFloat(void) const {
 }
 
 int		Fixed::toInt(void) const {
-	return (this->fixed_point / 256);
+	return (this->fixed_point / (1 << this->fraction_bits));
 }
 
 Fixed&	Fixed::operator=(Fixed const& src) {
@@ -88,7 +68,7 @@ Fixed&	Fixed::operator=(Fixed const& src) {
 	return *this;
 }
 
-std::ostream&	operator<<(std::ostream& ostr, const Fixed& src) {
-	ostr << src.toFloat();
-	return ostr;
+std::ostream&	operator<<(std::ostream& ostrm, Fixed const& src) {
+	ostrm << src.toFloat();
+	return ostrm;
 }
