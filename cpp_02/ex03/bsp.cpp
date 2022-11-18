@@ -1,28 +1,24 @@
 #include "Point.hpp"
 
 bool bsp( Point const a, Point const b, Point const c, Point const point) {
-	float	a_x = a.getPointX();
-	float	a_y = a.getPointY();
-	float	b_x = b.getPointX();
-	float	b_y = b.getPointY();
-	float	c_x = c.getPointX();
-	float	c_y = c.getPointY();
-	float	p_x = point.getPointX();
-	float	p_y = point.getPointY();
+	Fixed	a_x(a.getFixedPointX());
+	Fixed	a_y(a.getFixedPointY());
+	Fixed	b_x(b.getFixedPointX());
+	Fixed	b_y(b.getFixedPointY());
+	Fixed	c_x(c.getFixedPointX());
+	Fixed	c_y(c.getFixedPointY());
+	Fixed	p_x(point.getFixedPointX());
+	Fixed	p_y(point.getFixedPointY());
 
-	std::cout << "[" << point.getPointX() << "]" << std::endl;
-	std::cout << "[" << p_y << "]" << std::endl;
-	float alpha = ((b_y - c_y)*(p_x - c_x) + (c_x - b_x)*(p_y - c_y)) /
-				((b_y - c_y)*(a_x - c_x) + (c_x - b_x)*(a_y - c_y));
-	float beta = ((c_y - a_y)*(p_x - c_x) + (a_x - c_x)*(p_y - c_y)) /
-				((b_y - c_y)*(a_x - c_x) + (c_x - b_x)*(a_y - c_y));
-	float gamma = 1.0f - (alpha + beta);
+	Fixed	det = (b_y - c_y)*(a_x - c_x) + (c_x - b_x)*(a_y - c_y);
 
-	std::cout << "{" << alpha + beta << "}" << std::endl;
-	std::cout << "(" << alpha << ")" << std::endl;
-	std::cout << "(" << beta << ")" << std::endl;
-	std::cout << "(" << gamma << ")" << std::endl;
-	if (alpha > 0 && beta > 0 && gamma > 0)
+	Fixed	alpha = ((b_y - c_y)*(p_x - c_x) + (c_x - b_x)*(p_y - c_y)) / det;
+	Fixed	beta = ((c_y - a_y)*(p_x - c_x) + (a_x - c_x)*(p_y - c_y)) / det;
+	Fixed	gamma = Fixed(1) - alpha - beta;
+
+	Fixed	zero(0);
+
+	if (alpha > zero && beta > zero && gamma > zero)
 		return true;
 	else
 		return false;

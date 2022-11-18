@@ -16,6 +16,8 @@ public:
 
 	float	getPointX(void) const;
 	float	getPointY(void) const;
+	Fixed const&	getFixedPointX(void) const;
+	Fixed const&	getFixedPointY(void) const;
 	Point&	operator=(Point const& src);
 };
 

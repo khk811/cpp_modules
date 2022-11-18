@@ -20,6 +20,13 @@ float	Point::getPointY(void) const {
 	return this->y.toFloat();
 }
 
+const Fixed&	Point::getFixedPointX() const {
+	return this->x;
+}
+const Fixed&	Point::getFixedPointY(void) const {
+	return this->y;
+}
+
 Point&	Point::operator=(Point const& src) {
 	if (this != &src) {
 		Point	temp(src.x, src.y);
