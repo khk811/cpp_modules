@@ -3,7 +3,7 @@
 Point::Point() : x(0), y(0) {
 }
 
-Point::Point(Fixed const a, Fixed const b) : x(a), y(b) {
+Point::Point(float const a, float const b) : x(a), y(b) {
 }
 
 Point::Point(Point const& src) {
@@ -21,5 +21,6 @@ Fixed const&	Point::getFixedPointY(void) const {
 }
 
 Point&	Point::operator=(Point const& src) {
+	(void)src;
 	return *this;
 }
