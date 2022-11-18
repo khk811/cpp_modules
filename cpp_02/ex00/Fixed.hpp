@@ -9,9 +9,9 @@ private:
 	int					fixed_point;
 	static int const	fraction_bits = 8;
 public:
-	Fixed(void);
+	Fixed();
 	Fixed(Fixed const& src);
-	~Fixed(void);
+	~Fixed();
 	int					getRawBits(void) const;
 	void				setRawBits(int const raw);
 
