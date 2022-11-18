@@ -1,17 +1,17 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() {
+Fixed::Fixed(void) {
 	std::cout << "Default constructor called" << std::endl;
 	this->fixed_point = 0;
 }
 
-Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
+Fixed::Fixed(Fixed const& src) {
+	std::cout << "Copy constructor called" << std::endl;
+	*this = src;
 }
 
-Fixed::Fixed(Fixed& fix) {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = fix;
+Fixed::~Fixed(void) {
+	std::cout << "Destructor called" << std::endl;
 }
 
 int	Fixed::getRawBits(void) const {

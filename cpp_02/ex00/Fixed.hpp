@@ -7,11 +7,11 @@ class Fixed
 {
 private:
 	int					fixed_point;
-	static const int	fraction_bits = 8;
+	static int const	fraction_bits = 8;
 public:
-	Fixed();
-	Fixed(Fixed& fix);
-	~Fixed();
+	Fixed(void);
+	Fixed(Fixed const& src);
+	~Fixed(void);
 	int					getRawBits(void) const;
 	void				setRawBits(int const raw);
 
