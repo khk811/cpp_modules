@@ -36,7 +36,7 @@ void	Fixed::setRawBits(int const src) {
 
 float	Fixed::toFloat(void) const {
 	float	ret = 0;
-	float	add = FIX_EPSILON;
+	float	add = FIX_UNIT;
 	int		raw_bit = this->fixed_point;
 	bool	is_negative = false;
 
@@ -50,7 +50,7 @@ float	Fixed::toFloat(void) const {
 		else {
 			add *= 2;
 		}
-		raw_bit = raw_bit >> 1;
+		raw_bit = raw_bit / 2;
 	}
 	if (is_negative == true)
 		ret *= -1;

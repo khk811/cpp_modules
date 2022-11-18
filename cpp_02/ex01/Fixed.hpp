@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cmath>
 
-#define	FIX_EPSILON	0.00390625;
+#define	FIX_UNIT	0.00390625;
 
 class Fixed
 {
