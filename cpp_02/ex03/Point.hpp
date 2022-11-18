@@ -11,14 +11,12 @@ private:
 public:
 	Point();
 	Point(Fixed const a, Fixed const b);
-	Point(const Point& src);
+	Point(Point const& src);
 	~Point();
 
-	float	getPointX(void) const;
-	float	getPointY(void) const;
 	Fixed const&	getFixedPointX(void) const;
 	Fixed const&	getFixedPointY(void) const;
-	Point&	operator=(Point const& src);
+	Point&			operator=(Point const& src);
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);

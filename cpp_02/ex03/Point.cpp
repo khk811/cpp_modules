@@ -6,24 +6,17 @@ Point::Point() : x(0), y(0) {
 Point::Point(Fixed const a, Fixed const b) : x(a), y(b) {
 }
 
-Point::Point(const Point& src) {
+Point::Point(Point const& src) {
 	*this = src;
 }
 
 Point::~Point() {
 }
 
-float	Point::getPointX(void) const {
-	return this->x.toFloat();
-}
-float	Point::getPointY(void) const {
-	return this->y.toFloat();
-}
-
-const Fixed&	Point::getFixedPointX() const {
+Fixed const&	Point::getFixedPointX() const {
 	return this->x;
 }
-const Fixed&	Point::getFixedPointY(void) const {
+Fixed const&	Point::getFixedPointY(void) const {
 	return this->y;
 }
 
