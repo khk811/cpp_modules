@@ -4,17 +4,19 @@
 #include <iostream>
 #include <cmath>
 
+#define	FIX_UNIT	0.00390625;
+
 class Fixed
 {
 private:
 	int					fixed_point;
-	static const int	fraction_bits = 8;
+	static int const	fraction_bits = 8;
 
 public:
 	Fixed();
-	Fixed(const Fixed& fix);
-	Fixed(const int src);
-	Fixed(const float src);
+	Fixed(Fixed const& src);
+	Fixed(int const src);
+	Fixed(float const src);
 	~Fixed();
 	int					getRawBits(void) const;
 	void				setRawBits(int const raw);
@@ -40,12 +42,12 @@ public:
 	Fixed&				operator--(void);
 	Fixed				operator--(int);
 
-	static const Fixed&	min(Fixed& a, Fixed& b);
+	static Fixed&		min(Fixed& a, Fixed& b);
 	static const Fixed&	min(Fixed const& a, Fixed const& b);
-	static const Fixed&	max(Fixed& a, Fixed& b);
+	static Fixed&		max(Fixed& a, Fixed& b);
 	static const Fixed&	max(Fixed const& a, Fixed const& b);
 };
 
-std::ostream&		operator<<(std::ostream& ostrm, const Fixed& src);
+std::ostream&		operator<<(std::ostream& ostrm, Fixed const& src);
 
 #endif
