@@ -1,8 +1,8 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void) {
 	ClapTrap	test1("steve");
-	ClapTrap	test2("romeo");
+	ScavTrap	test2("romeo");
 
 	test1.attack("alex");
 	test2.takeDamage(100);
