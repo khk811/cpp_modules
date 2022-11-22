@@ -3,11 +3,21 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
-
+class ScavTrap : public ClapTrap
+{
+private:
+	std::string		name;
+	unsigned int	hp;
+	unsigned int	ep;
+	unsigned int	ad;
 public:
-	ScavTrap(std::string name);
-	void guardGate();
+	ScavTrap();
+	ScavTrap(ScavTrap const& src);
+	ScavTrap(std::string scav_name);
+	~ScavTrap();
+	void			attack(const std::string& target);
+	void 			guardGate();
+	ScavTrap&		operator=(ScavTrap const& src);
 };
 
 #endif
