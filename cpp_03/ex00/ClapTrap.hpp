@@ -12,13 +12,13 @@ private:
 	unsigned int	attack_damage;
 public:
 	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap& src);
+	ClapTrap(ClapTrap const& src);
 	~ClapTrap();
-	void			attack(const std::string& target);
+	void			attack(std::string const& target);
 	void			takeDamage(unsigned int amount);
 	void			beRepaired(unsigned int amount);
 
-	ClapTrap&		operator=(const ClapTrap& src);
+	ClapTrap&		operator=(ClapTrap const& src);
 };
 
 #endif

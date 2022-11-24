@@ -9,11 +9,11 @@ ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& src) {
+ClapTrap::ClapTrap(ClapTrap const& src) {
 	std::cout << "ClapTrap Copy Constructor called" << std::endl;
 	*this = src;
 }
-void	ClapTrap::attack(const std::string& target) {
+void	ClapTrap::attack(std::string const& target) {
 	if (this->energy_point > 0 && this->hit_point > 0) {
 		this->energy_point -= 1;
 		std::cout << "ClapTrap " << this->name;
@@ -53,7 +53,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
-ClapTrap&	ClapTrap::operator=(const ClapTrap& src) {
+ClapTrap&	ClapTrap::operator=(ClapTrap const& src) {
 	if (this != &src) {
 		this->name = src.name;
 		this->hit_point = src.hit_point;
