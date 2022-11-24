@@ -6,10 +6,6 @@
 class ScavTrap : public ClapTrap
 {
 private:
-	std::string		name;
-	unsigned int	hp;
-	unsigned int	ep;
-	unsigned int	ad;
 public:
 	ScavTrap();
 	ScavTrap(ScavTrap const& src);

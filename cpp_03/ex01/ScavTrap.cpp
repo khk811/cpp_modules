@@ -4,13 +4,14 @@ ScavTrap::ScavTrap() {
 	std::cout << "ScavTrap Default Constructor Called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string scav_name) {
+ScavTrap::ScavTrap(std::string scav_name)
+	: ClapTrap()
+ {
 	std::cout << "Scavtrap whatever created duh" << std::endl;
-	clap_name = scav_name;
-	this->name = scav_name;
-	this->hp = 100;
-	this->ep = 50;
-	this->ad = 20;
+	this->setClapTrapName(scav_name);
+	this->setClapTrapHP(100);
+	this->setClapTrapEP(50);
+	this->setClapTrapAD(20);
 }
 
 ScavTrap::~ScavTrap() {
@@ -22,16 +23,16 @@ ScavTrap::ScavTrap(ScavTrap const& src) {
 	*this = src;
 }
 void	ScavTrap::attack(const std::string& target) {
-	if (this->ep > 0 && this->hp > 0) {
-		this->ep -= 1;
-		std::cout << "ScavTrap " << this->name;
+	if (this->getClapTrapEP() > 0 && this->getClapTrapHP() > 0) {
+		this->setClapTrapEP(this->getClapTrapEP() - 1);
+		std::cout << "ScavTrap " << this->getClapTrapName();
 		std::cout << " attacks " << target;
-		std::cout << ", causing " << this->ad;
+		std::cout << ", causing " << this->getClapTrapAD();
 		std::cout << " points of damage!" << std::endl;
 	}
 	else {
-		std::cout << "ScavTrap " << this->name;
-		std::cout << this->name;
+		std::cout << "ScavTrap " << this->getClapTrapName();
+		std::cout << this->getClapTrapName();
 		std::cout << " Can't do anything: either it's dead or out of energy" << std::endl;
 	}
 }
@@ -43,10 +44,10 @@ void	ScavTrap::guardGate() {
 ScavTrap&	ScavTrap::operator=(ScavTrap const& src) {
 	std::cout << "ScavTrap Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
-		this->name = src.name;
-		this->hp = src.hp;
-		this->ep = src.ep;
-		this->ad = src.ad;
+		this->setClapTrapName(src.getClapTrapName());
+		this->setClapTrapHP(src.getClapTrapHP());
+		this->setClapTrapEP(src.getClapTrapEP());
+		this->setClapTrapAD(src.getClapTrapAD());
 	}
 	return *this;
 }
