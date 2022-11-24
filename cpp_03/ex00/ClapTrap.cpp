@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : hit_point(10), energy_point(10), attack_damage(10) {
+ClapTrap::ClapTrap(std::string name) : hp(10), ep(10), ad(10) {
 	std::cout << "ClapTrap Default Constructor called" << std::endl;
 	this->name = name;
 }
@@ -14,11 +14,11 @@ ClapTrap::ClapTrap(ClapTrap const& src) {
 	*this = src;
 }
 void	ClapTrap::attack(std::string const& target) {
-	if (this->energy_point > 0 && this->hit_point > 0) {
-		this->energy_point -= 1;
+	if (this->ep > 0 && this->hp > 0) {
+		this->ep -= 1;
 		std::cout << "ClapTrap " << this->name;
 		std::cout << " attacks " << target;
-		std::cout << ", causing " << this->attack_damage;
+		std::cout << ", causing " << this->ad;
 		std::cout << " points of damage!" << std::endl;
 	}
 	else {
@@ -27,22 +27,22 @@ void	ClapTrap::attack(std::string const& target) {
 	}
 }
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (this->hit_point >= amount) {
-		this->hit_point -= amount;
+	if (this->hp >= amount) {
+		this->hp -= amount;
 		std::cout << "ClapTrap " << this->name;
 		std::cout << " took " << amount << " damage!" << std::endl;
 	}
 	else {
 		std::cout << "Overkill: ClapTrap " << this->name;
-		std::cout << " took " << amount << "(" << amount - this->hit_point << ")";
+		std::cout << " took " << amount << "(" << amount - this->hp << ")";
 		std::cout << " damage!" << std::endl;
-		this->hit_point = 0;
+		this->hp = 0;
 	}
 }
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (this->energy_point > 0 && this->hit_point > 0) {
-		this->energy_point -= 0;
-		this->hit_point += amount;
+	if (this->ep > 0 && this->hp > 0) {
+		this->ep -= 0;
+		this->hp += amount;
 		std::cout << "ClapTrap " << this->name;
 		std::cout << " repaired it self! ";
 		std::cout << ": " << amount << " point" << std::endl;
@@ -53,12 +53,44 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
+std::string		ClapTrap::getClapTrapName() {
+	return this->name;
+}
+
+void			ClapTrap::setClapTrapName(std::string new_name) {
+	this->name = new_name;
+}
+
+unsigned int	ClapTrap::getClapTrapHP() {
+	return this->hp;
+}
+
+void			ClapTrap::setClapTrapHP(unsigned int new_hp) {
+	this->hp = new_hp;
+}
+
+unsigned int	ClapTrap::getClapTrapEP() {
+	return this->ep;
+}
+
+void			ClapTrap::setClapTrapEP(unsigned int new_ep) {
+	this->ep = new_ep;
+}
+
+unsigned int	ClapTrap::getClapTrapAD() {
+	return this->ad;
+}
+
+void			ClapTrap::setClapTrapAD(unsigned int new_ad) {
+	this->ad = new_ad;
+}
+
 ClapTrap&	ClapTrap::operator=(ClapTrap const& src) {
 	if (this != &src) {
 		this->name = src.name;
-		this->hit_point = src.hit_point;
-		this->attack_damage = src.attack_damage;
-		this->energy_point = src.energy_point;
+		this->hp = src.hp;
+		this->ad = src.ad;
+		this->ep = src.ep;
 	}
 	return *this;
 }
