@@ -11,6 +11,7 @@ private:
 	unsigned int	ep;
 	unsigned int	ad;
 public:
+	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(ClapTrap const& src);
 	~ClapTrap();
