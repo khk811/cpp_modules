@@ -4,12 +4,6 @@
 #include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap {
-private:
-	std::string	name;
-	unsigned int	hp;
-	unsigned int	ep;
-	unsigned int	ad;
-
 public:
 	FragTrap();
 	FragTrap(FragTrap const& src);

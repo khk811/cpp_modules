@@ -1,6 +1,5 @@
 #include "FragTrap.hpp"
 
-
 FragTrap::FragTrap() {
 	std::cout << "FragTrap Default Constructor Called" << std::endl;
 }
@@ -14,9 +13,8 @@ FragTrap::FragTrap(FragTrap const& src) {
 	*this = src;
 }
 
-FragTrap::FragTrap(std::string frag_name) {
+FragTrap::FragTrap(std::string frag_name) : ClapTrap(frag_name) {
 	std::cout << "FragTrap String Constructor Called" << std::endl;
-	clap_name = frag_name;
 	this->hp = 100;
 	this->ep = 100;
 	this->ad = 30;
