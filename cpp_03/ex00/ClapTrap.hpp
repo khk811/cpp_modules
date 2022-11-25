@@ -19,10 +19,10 @@ public:
 	void			takeDamage(unsigned int amount);
 	void			beRepaired(unsigned int amount);
 
-	std::string		getClapTrapName();
-	unsigned int	getClapTrapHP();
-	unsigned int	getClapTrapEP();
-	unsigned int	getClapTrapAD();
+	std::string		getClapTrapName() const;
+	unsigned int	getClapTrapHP() const;
+	unsigned int	getClapTrapEP() const;
+	unsigned int	getClapTrapAD() const;
 
 	ClapTrap&		operator=(ClapTrap const& src);
 };

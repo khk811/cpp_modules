@@ -2,11 +2,18 @@
 
 ClapTrap::ClapTrap() {
 	std::cout << "ClapTrap Default Constructor called" << std::endl;
+	this->name = "[Untitled]";
+	this->hp = 10;
+	this->ep = 10;
+	this->ad = 0;
 }
 
-ClapTrap::ClapTrap(std::string name) : hp(10), ep(10), ad(10) {
+ClapTrap::ClapTrap(std::string name) {
 	std::cout << "ClapTrap String Constructor called" << std::endl;
 	this->name = name;
+	this->hp = 10;
+	this->ep = 10;
+	this->ad = 0;
 }
 
 ClapTrap::~ClapTrap() {
@@ -57,19 +64,19 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
-std::string		ClapTrap::getClapTrapName() {
+std::string		ClapTrap::getClapTrapName() const {
 	return this->name;
 }
 
-unsigned int	ClapTrap::getClapTrapHP() {
+unsigned int	ClapTrap::getClapTrapHP() const {
 	return this->hp;
 }
 
-unsigned int	ClapTrap::getClapTrapEP() {
+unsigned int	ClapTrap::getClapTrapEP() const {
 	return this->ep;
 }
 
-unsigned int	ClapTrap::getClapTrapAD() {
+unsigned int	ClapTrap::getClapTrapAD() const {
 	return this->ad;
 }
 
