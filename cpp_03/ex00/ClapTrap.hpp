@@ -20,13 +20,9 @@ public:
 	void			beRepaired(unsigned int amount);
 
 	std::string		getClapTrapName();
-	void			setClapTrapName(std::string new_name);
 	unsigned int	getClapTrapHP();
-	void			setClapTrapHP(unsigned int new_hp);
 	unsigned int	getClapTrapEP();
-	void			setClapTrapEP(unsigned int new_ep);
 	unsigned int	getClapTrapAD();
-	void			setClapTrapAD(unsigned int new_ad);
 
 	ClapTrap&		operator=(ClapTrap const& src);
 };

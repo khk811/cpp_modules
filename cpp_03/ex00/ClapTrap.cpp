@@ -61,32 +61,16 @@ std::string		ClapTrap::getClapTrapName() {
 	return this->name;
 }
 
-void			ClapTrap::setClapTrapName(std::string new_name) {
-	this->name = new_name;
-}
-
 unsigned int	ClapTrap::getClapTrapHP() {
 	return this->hp;
-}
-
-void			ClapTrap::setClapTrapHP(unsigned int new_hp) {
-	this->hp = new_hp;
 }
 
 unsigned int	ClapTrap::getClapTrapEP() {
 	return this->ep;
 }
 
-void			ClapTrap::setClapTrapEP(unsigned int new_ep) {
-	this->ep = new_ep;
-}
-
 unsigned int	ClapTrap::getClapTrapAD() {
 	return this->ad;
-}
-
-void			ClapTrap::setClapTrapAD(unsigned int new_ad) {
-	this->ad = new_ad;
 }
 
 ClapTrap&	ClapTrap::operator=(ClapTrap const& src) {
