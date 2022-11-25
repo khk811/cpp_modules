@@ -2,6 +2,10 @@
 
 FragTrap::FragTrap() {
 	std::cout << "FragTrap Default Constructor Called" << std::endl;
+	this->name = "[Untitled]";
+	this->hp = 100;
+	this->ep = 100;
+	this->ad = 30;
 }
 
 FragTrap::~FragTrap() {

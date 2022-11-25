@@ -1,18 +1,27 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void) {
-	ClapTrap	test1("steve");
-	ScavTrap	test2("romeo");
-	FragTrap	test3("Dmitri");
+	DiamondTrap	test4("Alexandra the mutant");
 
-	test1.attack("alex");
-	test2.takeDamage(80);
-	test2.beRepaired(10);
-	test3.highFivesGuys();
-	test1.beRepaired(20);
-	test1.takeDamage(15);
-	test2.attack("delta");
-	test2.guardGate();
+
+	std::cout << std::endl;
+
+	std::cout << test4.getClapTrapName() << std::endl;
+	std::cout << test4.getClapTrapHP() << std::endl;
+	std::cout << test4.getClapTrapEP() << std::endl;
+	std::cout << test4.getClapTrapAD() << std::endl;
+	test4.attack("Romeo");
+	std::cout << std::endl;
+	test4.takeDamage(20);
+	std::cout << std::endl;
+	test4.beRepaired(30);
+	std::cout << std::endl;
+	test4.highFivesGuys();
+	std::cout << std::endl;
+	test4.guardGate();
+	std::cout << std::endl;
+
 	return 0;
 }
