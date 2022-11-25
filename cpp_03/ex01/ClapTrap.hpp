@@ -5,7 +5,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string		name;
 	unsigned int	hp;
 	unsigned int	ep;
@@ -20,13 +20,9 @@ public:
 	void			beRepaired(unsigned int amount);
 
 	std::string		getClapTrapName() const;
-	void			setClapTrapName(std::string new_name);
 	unsigned int	getClapTrapHP() const;
-	void			setClapTrapHP(unsigned int new_hp);
 	unsigned int	getClapTrapEP() const;
-	void			setClapTrapEP(unsigned int new_ep);
 	unsigned int	getClapTrapAD() const;
-	void			setClapTrapAD(unsigned int new_ad);
 
 	ClapTrap&		operator=(ClapTrap const& src);
 };
