@@ -12,21 +12,17 @@ void	getClapTrapStatus(ClapTrap const& src) {
 int	main(void) {
 	ClapTrap	steve("Steve");
 	ClapTrap	romeo("Romeo");
-	ClapTrap	alex("Alex");
 
-	steve.attack("Romeo");
-	romeo.takeDamage(5);
-	alex.takeDamage(100);
 	getClapTrapStatus(steve);
 	getClapTrapStatus(romeo);
-	getClapTrapStatus(alex);
+	steve.attack(romeo.getClapTrapName());
+	romeo.takeDamage(steve.getClapTrapAD());
+	getClapTrapStatus(steve);
+	getClapTrapStatus(romeo);
+	steve.takeDamage(15);
 	romeo.beRepaired(10);
 	steve.beRepaired(20);
-	alex.beRepaired(30);
-	steve.takeDamage(15);
-	alex.takeDamage(10);
 	getClapTrapStatus(steve);
 	getClapTrapStatus(romeo);
-	getClapTrapStatus(alex);
 	return 0;
 }
