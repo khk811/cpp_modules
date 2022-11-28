@@ -2,26 +2,30 @@
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
+void	getDiamondTrapStatus(DiamondTrap const& src) {
+	std::cout << "DiamondTrap" << " [" << src.getClapTrapName() << "]";
+	std::cout << ": ";
+	std::cout << "HP => " << src.getClapTrapHP();
+	std::cout << " EP => " << src.getClapTrapEP();
+	std::cout << " AD => " << src.getClapTrapAD() << std::endl;
+}
+
 int	main(void) {
-	DiamondTrap	test4("Alexandra the mutant");
+	DiamondTrap	alexandra("Alexandra the mutant");
+	DiamondTrap	test_dummy("Test dummy");
 
 
-	std::cout << std::endl;
-
-	std::cout << test4.getClapTrapName() << std::endl;
-	std::cout << test4.getClapTrapHP() << std::endl;
-	std::cout << test4.getClapTrapEP() << std::endl;
-	std::cout << test4.getClapTrapAD() << std::endl;
-	test4.attack("Romeo");
-	std::cout << std::endl;
-	test4.takeDamage(20);
-	std::cout << std::endl;
-	test4.beRepaired(30);
-	std::cout << std::endl;
-	test4.highFivesGuys();
-	std::cout << std::endl;
-	test4.guardGate();
-	std::cout << std::endl;
+	getDiamondTrapStatus(alexandra);
+	alexandra.attack(test_dummy.getClapTrapName());
+	test_dummy.takeDamage(alexandra.getClapTrapAD());
+	getDiamondTrapStatus(alexandra);
+	getDiamondTrapStatus(test_dummy);
+	alexandra.takeDamage(20);
+	alexandra.beRepaired(30);
+	alexandra.highFivesGuys();
+	alexandra.guardGate();
+	alexandra.whoAmI();
+	getDiamondTrapStatus(alexandra);
 
 	return 0;
 }
