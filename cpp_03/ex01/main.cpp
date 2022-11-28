@@ -9,7 +9,6 @@ void	getScavTrapStatus(ScavTrap const& src) {
 	std::cout << " AD => " << src.getClapTrapAD() << std::endl;
 }
 
-
 void	getClapTrapStatus(ClapTrap const& src) {
 
 	std::cout << "ClapTrap" << " [" << src.getClapTrapName() << "]";
