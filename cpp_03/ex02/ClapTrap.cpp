@@ -2,6 +2,10 @@
 
 ClapTrap::ClapTrap() {
 	std::cout << "ClapTrap Default Constructor called" << std::endl;
+	this->name = "[Untitled]";
+	this->hp = 10;
+	this->ep = 10;
+	this->ad = 0;
 }
 
 ClapTrap::ClapTrap(std::string name) {
@@ -21,6 +25,7 @@ ClapTrap::ClapTrap(ClapTrap const& src) {
 	*this = src;
 }
 void	ClapTrap::attack(std::string const& target) {
+	std::cout << "ClapTrap attack() called" << std::endl;
 	if (this->ep > 0 && this->hp > 0) {
 		this->ep -= 1;
 		std::cout << "ClapTrap " << this->name;
@@ -30,33 +35,39 @@ void	ClapTrap::attack(std::string const& target) {
 	}
 	else {
 		std::cout << "ClapTrap " << this->name;
-		std::cout << " Can't do anything because of its energy point!" << std::endl;
+		std::cout << " can't do anything: Not enough HP(or Ep)" << std::endl;
 	}
 }
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (this->hp >= amount) {
-		this->hp -= amount;
-		std::cout << "ClapTrap " << this->name;
-		std::cout << " took " << amount << " damage!" << std::endl;
+	std::cout << "ClapTrap takeDamage() called" << std::endl;
+	if (this->hp > 0) {
+		if (this->hp > amount) {
+			this->hp -= amount;
+			std::cout << "ClapTrap " << this->name;
+			std::cout << " took " << amount << " damage(s)!" << std::endl;
+		}
+		else {
+			this->hp = 0;
+			std::cout << "Overkill: ClapTrap " << this->name;
+			std::cout << " took " << amount << " damage(s)!" << std::endl;
+		}
 	}
 	else {
-		std::cout << "Overkill: ClapTrap " << this->name;
-		std::cout << " took " << amount << "(" << amount - this->hp << ")";
-		std::cout << " damage!" << std::endl;
-		this->hp = 0;
+		std::cout << "ClapTrap " << this->name << " has already dead" << std::endl;
 	}
 }
 void	ClapTrap::beRepaired(unsigned int amount) {
+	std::cout << "ClapTrap beRepaired() called" << std::endl;
 	if (this->ep > 0 && this->hp > 0) {
 		this->ep -= 0;
 		this->hp += amount;
 		std::cout << "ClapTrap " << this->name;
 		std::cout << " repaired it self! ";
-		std::cout << ": " << amount << " point" << std::endl;
+		std::cout << ": " << amount << " point(s)" << std::endl;
 	}
 	else {
 		std::cout << "ClapTrap " << this->name;
-		std::cout << " Can't do anything because of its energy point!" << std::endl;
+		std::cout << " can't do anything: Not enough HP(or Ep)" << std::endl;
 	}
 }
 
@@ -77,6 +88,7 @@ unsigned int	ClapTrap::getClapTrapAD() const {
 }
 
 ClapTrap&	ClapTrap::operator=(ClapTrap const& src) {
+	std::cout << "ClapTrap Copy Assignment Operator called" << std::endl;
 	if (this != &src) {
 		this->name = src.name;
 		this->hp = src.hp;

@@ -2,15 +2,18 @@
 
 ScavTrap::ScavTrap() {
 	std::cout << "ScavTrap Default Constructor Called" << std::endl;
+	this->name = "[Untitled]";
+	this->hp = 100;
+	this->ep = 50;
+	this->ad = 20;
 }
 
 ScavTrap::ScavTrap(std::string scav_name) : ClapTrap(scav_name) {
-	std::cout << "Scavtrap whatever created duh" << std::endl;
+	std::cout << "ScavTrap String Constructor Called" << std::endl;
 	this->hp = 100;
 	this->ep = 50;
 	this->ad = 20;
  }
-
 
 ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap Destructor Called" << std::endl;
@@ -20,7 +23,9 @@ ScavTrap::ScavTrap(ScavTrap const& src) {
 	std::cout << "ScavTrap Copy Constructor Called" << std::endl;
 	*this = src;
 }
+
 void	ScavTrap::attack(const std::string& target) {
+	std::cout << "ScavTrap attack() Called" << std::endl;
 	if (this->ep > 0 && this->hp > 0) {
 		this->ep -= 1;
 		std::cout << "ScavTrap " << this->name;
@@ -30,13 +35,13 @@ void	ScavTrap::attack(const std::string& target) {
 	}
 	else {
 		std::cout << "ScavTrap " << this->name;
-		std::cout << this->name;
-		std::cout << " Can't do anything: either it's dead or out of energy" << std::endl;
+		std::cout << " can't do anything: Not enough HP(or Ep)" << std::endl;
 	}
 }
 
 void	ScavTrap::guardGate() {
-	std::cout << "scav trap guard whatever" << std::endl;
+	std::cout << "ScavTrap guardGate() Called";
+	std::cout << ": Gate-guard mode acticvated" << std::endl;
 }
 
 ScavTrap&	ScavTrap::operator=(ScavTrap const& src) {

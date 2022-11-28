@@ -5,7 +5,6 @@
 
 class ScavTrap : public ClapTrap
 {
-private:
 public:
 	ScavTrap();
 	ScavTrap(ScavTrap const& src);
