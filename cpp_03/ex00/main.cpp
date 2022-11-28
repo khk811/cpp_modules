@@ -1,15 +1,12 @@
 #include "ClapTrap.hpp"
 
-void	getStatus(ClapTrap const& src) {
+void	getClapTrapStatus(ClapTrap const& src) {
 
-	std::cout << std::endl;
-	std::cout << src.getClapTrapName() << "'s current hit point is ";
-	std::cout << src.getClapTrapHP() << std::endl;
-	std::cout << src.getClapTrapName() << "'s current energy point is ";
-	std::cout << src.getClapTrapEP() << std::endl;
-	std::cout << src.getClapTrapName() << "'s current attack damage is ";
-	std::cout << src.getClapTrapAD() << std::endl;
-	std::cout << std::endl;
+	std::cout << "ClapTrap" << " [" << src.getClapTrapName() << "]";
+	std::cout << ": ";
+	std::cout << "HP => " << src.getClapTrapHP();
+	std::cout << " EP => " << src.getClapTrapEP();
+	std::cout << " AD => " << src.getClapTrapAD() << std::endl;
 }
 
 int	main(void) {
@@ -20,14 +17,16 @@ int	main(void) {
 	steve.attack("Romeo");
 	romeo.takeDamage(5);
 	alex.takeDamage(100);
-	getStatus(steve);
-	getStatus(romeo);
-	getStatus(alex);
+	getClapTrapStatus(steve);
+	getClapTrapStatus(romeo);
+	getClapTrapStatus(alex);
 	romeo.beRepaired(10);
 	steve.beRepaired(20);
+	alex.beRepaired(30);
 	steve.takeDamage(15);
-	getStatus(steve);
-	getStatus(romeo);
-	getStatus(alex);
+	alex.takeDamage(10);
+	getClapTrapStatus(steve);
+	getClapTrapStatus(romeo);
+	getClapTrapStatus(alex);
 	return 0;
 }
