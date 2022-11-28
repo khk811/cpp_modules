@@ -1,15 +1,16 @@
 #include "ScavTrap.hpp"
 
 int	main(void) {
-	ClapTrap	test1("steve");
-	ScavTrap	test2("romeo");
+	ClapTrap	steve("Steve");
+	ScavTrap	romeo("Romeo");
 
-	test1.attack("alex");
-	test2.takeDamage(80);
-	test2.beRepaired(10);
-	test1.beRepaired(20);
-	test1.takeDamage(15);
-	test2.attack("delta");
-	test2.guardGate();
+	steve.attack(romeo.getClapTrapName());
+	romeo.takeDamage(steve.getClapTrapAD());
+	steve.beRepaired(10);
+	romeo.beRepaired(20);
+	romeo.takeDamage(15);
+	romeo.attack(steve.getClapTrapName());
+	steve.takeDamage(romeo.getClapTrapAD());
+	romeo.guardGate();
 	return 0;
 }
