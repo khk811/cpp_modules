@@ -1,4 +1,3 @@
-#include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
 void	getFragTrapStatus(FragTrap const& src) {
