@@ -1,5 +1,3 @@
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
 void	getDiamondTrapStatus(DiamondTrap const& src) {
