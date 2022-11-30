@@ -59,7 +59,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 void	ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << "ClapTrap beRepaired() called" << std::endl;
 	if (this->ep > 0 && this->hp > 0) {
-		this->ep -= 0;
+		this->ep -= 1;
 		this->hp += amount;
 		std::cout << "ClapTrap " << this->name;
 		std::cout << " repaired it self! ";

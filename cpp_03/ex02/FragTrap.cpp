@@ -35,6 +35,13 @@ FragTrap&	FragTrap::operator=(FragTrap const& src) {
 	return *this;
 }
 void	FragTrap::highFivesGuys(void) {
-	std::cout << "FragTrap highFivesGuys() Called";
-	std::cout << ": Asking high-five to others" << std::endl;
+	std::cout << "FragTrap highFivesGuys() Called" << std::endl;
+	if (this->ep > 0 && this->hp > 0) {
+		std::cout << this->name;
+		std::cout << ": Asking high-five to others" << std::endl;
+	}
+	else {
+		std::cout << "FragTrap " << this->name;
+		std::cout << " can't do anything: Not enough HP(or Ep)" << std::endl;
+	}
 }

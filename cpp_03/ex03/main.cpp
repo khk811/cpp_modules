@@ -22,7 +22,9 @@ int	main(void) {
 	alexandra.beRepaired(30);
 	alexandra.highFivesGuys();
 	alexandra.guardGate();
+	test_dummy.takeDamage(200);
 	alexandra.whoAmI();
+	test_dummy.whoAmI();
 	getDiamondTrapStatus(alexandra);
 
 	return 0;

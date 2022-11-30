@@ -20,9 +20,11 @@ int	main(void) {
 	getFragTrapStatus(steve);
 	getFragTrapStatus(romeo);
 	romeo.beRepaired(20);
+	romeo.takeDamage(140);
 	romeo.highFivesGuys();
 	romeo.attack(steve.getClapTrapName());
-	steve.takeDamage(romeo.getClapTrapAD());
+	steve.takeDamage(20);
+	romeo.takeDamage(steve.getClapTrapAD());
 	getFragTrapStatus(steve);
 	getFragTrapStatus(romeo);
 	return 0;

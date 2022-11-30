@@ -40,8 +40,15 @@ void	ScavTrap::attack(const std::string& target) {
 }
 
 void	ScavTrap::guardGate() {
-	std::cout << "ScavTrap guardGate() Called";
-	std::cout << ": Gate-guard mode acticvated" << std::endl;
+	std::cout << "ScavTrap guardGate() Called" << std::endl;
+	if (this->ep > 0 && this->hp > 0) {
+		std::cout << this->name;
+ 		std::cout << ": Gate-guard mode acticvated" << std::endl;
+	}
+	else {
+		std::cout << "ScavTrap " << this->name;
+		std::cout << " can't do anything: Not enough HP(or Ep)" << std::endl;
+	}
 }
 
 ScavTrap&	ScavTrap::operator=(ScavTrap const& src) {

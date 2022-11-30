@@ -24,8 +24,14 @@ DiamondTrap::~DiamondTrap() {
 
 void DiamondTrap::whoAmI() {
 	std::cout << "DiamondTrap whoAmI() Called" << std::endl;
-	std::cout << "=> DiamondTrap Name: " << this->name << std::endl;
-	std::cout << "=> ClapTrap Name: " << ClapTrap::name << std::endl;
+	if (this->ep > 0 && this->hp > 0) {
+		std::cout << "'I am " << this->name << ".'" << std::endl;
+		std::cout << "'In ClapTrap name, I am " << ClapTrap::name << ".'" << std::endl;
+	}
+	else {
+		std::cout << "DiamondTrap " << this->name;
+		std::cout << " can't do anything: Not enough HP(or Ep)" << std::endl;
+	}
 }
 
 DiamondTrap&	DiamondTrap::operator=(DiamondTrap const& src) {

@@ -23,9 +23,11 @@ int	main(void) {
 	romeo.beRepaired(20);
 	getScavTrapStatus(steve);
 	getScavTrapStatus(romeo);
-	romeo.takeDamage(15);
+	romeo.takeDamage(150);
+	romeo.takeDamage(10);
 	romeo.attack(steve.getClapTrapName());
 	steve.takeDamage(romeo.getClapTrapAD());
+	steve.guardGate();
 	romeo.guardGate();
 	getScavTrapStatus(steve);
 	getScavTrapStatus(romeo);
