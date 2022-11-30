@@ -2,6 +2,7 @@
 
 Animal::Animal() {
 	std::cout << "Animal Default Constructor Called" << std::endl;
+	this->type = "(null)";
 }
 
 Animal::~Animal() {
@@ -11,6 +12,15 @@ Animal::~Animal() {
 Animal::Animal(Animal const& src) {
 	std::cout << "Animal Copy Constructor Called" << std::endl;
 	*this = src;
+}
+
+void	Animal::makeSound() const {
+	std::cout << "Animal makesound() Called" << std::endl;
+	std::cout << "( insert animal sound here )" << std::endl;
+}
+
+std::string	Animal::getType() const {
+	return this->type;
 }
 
 Animal&		Animal::operator=(Animal const &src) {
