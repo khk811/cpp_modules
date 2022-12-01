@@ -12,8 +12,8 @@ Cat::Cat(Cat const& src) {
 }
 
 Cat::~Cat() {
-	std::cout << "Cat Destructor Called" << std::endl;
 	delete this->cat_brain;
+	std::cout << "Cat Destructor Called" << std::endl;
 }
 
 void	Cat::makeSound() const {

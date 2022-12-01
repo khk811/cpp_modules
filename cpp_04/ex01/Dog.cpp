@@ -12,8 +12,8 @@ Dog::Dog(Dog const& src) {
 }
 
 Dog::~Dog() {
-	std::cout << "Dog Destructor Called" << std::endl;
 	delete this->dog_brain;
+	std::cout << "Dog Destructor Called" << std::endl;
 }
 
 void	Dog::makeSound() const {
