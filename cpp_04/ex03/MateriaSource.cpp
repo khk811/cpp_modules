@@ -21,6 +21,7 @@ void	MateriaSource::learnMateria(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (this->materias[i] == NULL) {
 			this->materias[i] = m;
+			std::cout << i << std::endl;
 			break;
 		}
 	}
@@ -28,8 +29,10 @@ void	MateriaSource::learnMateria(AMateria* m) {
 
 AMateria*	MateriaSource::createMateria(std::string const & type) {
 	for (int i = 0; i < 4; i++) {
-		if (this->materias[i]->getType() == type) {
-			return this->materias[i]->clone();
+		if (this->materias[i] != NULL) {
+			if (this->materias[i]->getType() == type) {
+				return this->materias[i]->clone();
+			}
 		}
 	}
 	return NULL;
@@ -40,4 +43,5 @@ MateriaSource&	MateriaSource::operator=(MateriaSource const& src) {
 	if (this != &src) {
 		// deep cp needed;
 	}
+	return *this;
 }

@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+class	AMateria;
+
 class ICharacter
 {
 public:

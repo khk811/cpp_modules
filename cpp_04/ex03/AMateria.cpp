@@ -23,7 +23,9 @@ std::string const&	AMateria::getType() const {
 	return this->type;
 }
 
-// virtual void		AMateria::use(ICharacter& target);
+void	AMateria::use(ICharacter& target) {
+	(void)target;
+}
 
 AMateria&	AMateria::operator=(AMateria const& src) {
 	std::cout << "AMateria Default Constructor Called" << std::endl;

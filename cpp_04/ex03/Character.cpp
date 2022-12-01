@@ -43,13 +43,13 @@ void	Character::equip(AMateria* m) {
 }
 
 void	Character::unequip(int idx) {
-	if ((0 < idx && idx < 4) && this->inventory[idx] != NULL) {
+	if ((0 <= idx && idx < 4) && this->inventory[idx] != NULL) {
 		this->inventory[idx] = NULL;
 	}
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if ((0 < idx && idx < 4) && this->inventory[idx] != NULL) {
+	if ((0 <= idx && idx < 4) && this->inventory[idx] != NULL) {
 		this->inventory[idx]->use(target);
 	}
 }
