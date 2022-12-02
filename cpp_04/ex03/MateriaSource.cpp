@@ -15,7 +15,12 @@ MateriaSource::MateriaSource(MateriaSource const& src) {
 }
 MateriaSource::~MateriaSource() {
 	std::cout << "MateriaSource Destructor Called" << std::endl;
-
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->materias[i] != NULL) {
+			delete this->materias[i];
+		}
+	}
 }
 void	MateriaSource::learnMateria(AMateria* m) {
 	for (int i = 0; i < 4; i++) {

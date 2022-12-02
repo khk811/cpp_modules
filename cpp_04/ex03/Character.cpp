@@ -26,6 +26,12 @@ Character::Character(std::string chr_name) {
 
 Character::~Character() {
 	std::cout << "Character Destructor Called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i] != NULL) {
+			delete this->inventory[i];
+		}
+	}
 }
 
 std::string const& Character::getName() const {
