@@ -11,8 +11,16 @@ Character::Character() {
 
 Character::Character(Character const& src) {
 	std::cout << "Character Copy Constructor Called" << std::endl;
-	*this = src;
-	// need deep cp;
+	this->name = src.name;
+	for (int i = 0; i < 4; i++)
+	{
+		if (src.inventory[i] != NULL) {
+			this->inventory[i] = src.inventory[i]->clone();
+		}
+		else {
+			this->inventory[i] = NULL;
+		}
+	}
 }
 
 Character::Character(std::string chr_name) {
@@ -64,7 +72,22 @@ Character&	Character::operator=(Character const& src) {
 	std::cout << "Character Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
 		this->name = src.name;
-		// need deep cp;
+		for (int i = 0; i < 4; i++)
+		{
+			if (src.inventory[i] != NULL) {
+				if (this->inventory[i] != NULL) {
+					delete this->inventory[i];
+				}
+				this->inventory[i] = src.inventory[i]->clone();
+			}
+			else {
+				if (this->inventory[i] != NULL) {
+					delete this->inventory[i];
+				}
+				this->inventory[i] = NULL;
+			}
+		}
+
 	}
 	return *this;
 }

@@ -3,7 +3,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-void	leak_test(void) {
+void	subject_example(void) {
 	IMateriaSource*	src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -26,8 +26,46 @@ void	leak_test(void) {
 	delete src;
 }
 
+void	copy_test() {
+	/* test copy constructor and copy assignment operator */
+	ICharacter*		alex = new Character("Alex");
+
+	IMateriaSource*	src = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	AMateria	*tmp;
+
+	tmp = src->createMateria("ice");
+	alex->equip(tmp);
+	tmp = src->createMateria("cure");
+	alex->equip(tmp);
+
+	Character		jacob = Character();
+
+	Character const	romeo = Character("Romeo");
+
+	tmp = src->createMateria("cure");
+	jacob.equip(tmp);
+	jacob.unequip(0);
+	delete tmp;
+	tmp = src->createMateria("cure");
+	jacob.equip(tmp);
+	jacob = romeo;
+	alex->use(0, jacob);
+	alex->use(1, jacob);
+	tmp = src->createMateria("ice");
+	jacob.equip(tmp);
+	jacob.use(0, *alex);
+
+	delete alex;
+	delete src;
+}
+
 int	main(void) {
-	leak_test();
+	subject_example();
+	copy_test();
 	system("leaks a.out");
 	return 0;
 }

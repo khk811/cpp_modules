@@ -9,8 +9,15 @@ MateriaSource::MateriaSource() {
 
 MateriaSource::MateriaSource(MateriaSource const& src) {
 	std::cout << "MateriaSource Copy Constructor Called" << std::endl;
-	// deep cp needed;
-	*this = src;
+	for (int i = 0; i < 4; i++)
+	{
+		if (src.materias[i] != NULL) {
+			this->materias[i] = src.materias[i]->clone();
+		}
+		else {
+			this->materias[i] = NULL;
+		}
+	}
 
 }
 MateriaSource::~MateriaSource() {
@@ -18,6 +25,7 @@ MateriaSource::~MateriaSource() {
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->materias[i] != NULL) {
+			std::cout << this->materias[i]->getType() << std::endl;
 			delete this->materias[i];
 		}
 	}
@@ -46,7 +54,21 @@ AMateria*	MateriaSource::createMateria(std::string const & type) {
 MateriaSource&	MateriaSource::operator=(MateriaSource const& src) {
 	std::cout << "MateriaSource Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
-		// deep cp needed;
+		for (int i = 0; i < 4; i++)
+		{
+			if (src.materias[i] != NULL) {
+				if (this->materias[i] != NULL) {
+					delete this->materias[i];
+				}
+				this->materias[i] = src.materias[i]->clone();
+			}
+			else {
+				if (this->materias[i] != NULL) {
+					delete this->materias[i];
+				}
+				this->materias[i] = NULL;
+			}
+		}
 	}
 	return *this;
 }
