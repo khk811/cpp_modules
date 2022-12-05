@@ -8,6 +8,7 @@ Dog::Dog() {
 
 Dog::Dog(Dog const& src) {
 	std::cout << "Dog Copy Constructor Called" << std::endl;
+	this->dog_brain = new Brain();
 	*this = src;
 }
 
@@ -21,11 +22,15 @@ void	Dog::makeSound() const {
 	std::cout << "Woof Woof" << std::endl;
 }
 
+Brain*	Dog::getBrain() const {
+	return this->dog_brain;
+}
+
 Dog&	Dog::operator=(Dog const& src) {
 	std::cout << "Dog Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
 		this->type = src.type;
-		// need deep copy of brain arr;
+		*(this->dog_brain) = *(src.dog_brain);
 	}
 	return *this;
 }

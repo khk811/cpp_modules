@@ -2,7 +2,7 @@
 
 Animal::Animal() {
 	std::cout << "Animal Default Constructor Called" << std::endl;
-	this->type = "(null)";
+	this->type = "( insert animal type here )";
 }
 
 Animal::~Animal() {
@@ -21,6 +21,10 @@ void	Animal::makeSound() const {
 
 std::string	Animal::getType() const {
 	return this->type;
+}
+
+Brain*	Animal::getBrain() const {
+	return NULL;
 }
 
 Animal&		Animal::operator=(Animal const &src) {

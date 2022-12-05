@@ -14,19 +14,25 @@ Brain::~Brain() {
 	std::cout << "Brain Destructor Called" << std::endl;
 }
 
-std::string	Brain::getIdea(unsigned int target_idx) const {
-	if (this->idea_idx >= target_idx) {
-		return this->ideas[target_idx];
+void	Brain::printIdeaNAddr(unsigned int idx) const {
+	if (idx >= this->idea_idx) {
+		std::cout << "Error: Invalid input index" << std::endl;
 	}
 	else {
-		return NULL;
+		std::cout << "the Idea: " << this->ideas[idx] << std::endl;
+		std::cout << "the idea address: " << &(this->ideas[idx]) << std::endl;
 	}
 }
 
 void	Brain::printAllIdeas() const {
-	for (unsigned int i = 0; i < idea_idx; i++)
-	{
-		std::cout << "idea[" << i << "]: " << this->ideas[i] << std::endl;
+	if (idea_idx == 0) {
+		std::cout << "Error: Have no idea(s)" << std::endl;
+	}
+	else {
+		for (unsigned int i = 0; i < idea_idx; i++)
+		{
+			std::cout << "idea[" << i << "]: " << this->ideas[i] << std::endl;
+		}
 	}
 }
 
@@ -42,8 +48,9 @@ void	Brain::setIdea(std::string idea) {
 
 Brain&	Brain::operator=(Brain const& src) {
 	std::cout << "Brain Copy Assignment Operator Called" << std::endl;
+	this->idea_idx = src.idea_idx;
 	if (this != &src) {
-		for (size_t i = 0; i < 100; i++)
+		for (unsigned int i = 0; i < src.idea_idx; i++)
 		{
 			this->ideas[i] = src.ideas[i];
 		}

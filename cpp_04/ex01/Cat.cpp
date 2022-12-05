@@ -22,6 +22,10 @@ void	Cat::makeSound() const {
 	std::cout << "Meow Meow" << std::endl;
 }
 
+Brain*	Cat::getBrain() const {
+	return this->cat_brain;
+}
+
 Cat&	Cat::operator=(Cat const& src) {
 	std::cout << "Cat Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
