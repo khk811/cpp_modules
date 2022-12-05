@@ -2,7 +2,7 @@
 
 Animal::Animal() {
 	std::cout << "Animal Default Constructor Called" << std::endl;
-	this->type = "(null)";
+	this->type = "( insert animal type here)";
 }
 
 Animal::~Animal() {
