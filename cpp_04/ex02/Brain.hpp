@@ -12,10 +12,10 @@ public:
 	Brain();
 	Brain(Brain const& src);
 	~Brain();
-	std::string	getIdea(unsigned int target_idx) const;
-	void		printAllIdeas() const;
-	void		setIdea(std::string idea);
-	Brain&		operator=(Brain const& src);
+	void			printIdeaNAddr(unsigned int idx) const;
+	void			printAllIdeas() const;
+	void			setIdea(std::string idea);
+	Brain&			operator=(Brain const& src);
 };
 
 
