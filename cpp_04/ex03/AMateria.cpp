@@ -28,7 +28,7 @@ void	AMateria::use(ICharacter& target) {
 }
 
 AMateria&	AMateria::operator=(AMateria const& src) {
-	std::cout << "AMateria Default Constructor Called" << std::endl;
+	std::cout << "AMateria Copy Assignment Operator Called" << std::endl;
 	(void)src;
 	return *this;
 }
