@@ -5,6 +5,7 @@
 #include "WrongCat.hpp"
 
 void	exampleTest(void) {
+	std::cout << "===Example Test===" << std::endl;
 	const Animal*	meta = new Animal();
 	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();
@@ -16,9 +17,17 @@ void	exampleTest(void) {
 	j->makeSound();
 	i->makeSound();
 
-	// add operator =, cp constructor, etc;
-	Animal*	delta = new Cat();
+	delete meta;
+	delete j;
+	delete i;
+}
 
+void	copyTest(void) {
+	std::cout << "\n===Copy Test===" << std::endl;
+	const Animal*	meta = new Animal();
+	Animal*			delta = new Cat();
+
+	std::cout << "\n---Copy Assignment Operator (Animal to cat)---" << std::endl;
 	*delta = *meta;
 	std::cout << "delta Type: " << delta->getType() << std::endl;
 	delta->makeSound();
@@ -26,6 +35,7 @@ void	exampleTest(void) {
 	const Dog	gamma;
 	const Dog	beta = Dog(gamma);
 
+	std::cout << "\n---Copy Constructor Test---" << std::endl;
 	std::cout << "gamma Type: "<< gamma.getType() << " " << std::endl;
 	std::cout << "beta Type: "<< beta.getType() << " " << std::endl;
 	gamma.makeSound();
@@ -33,8 +43,6 @@ void	exampleTest(void) {
 
 	delete delta;
 	delete meta;
-	delete j;
-	delete i;
 }
 
 void	wrongAnimalTest(void) {
@@ -43,7 +51,9 @@ void	wrongAnimalTest(void) {
 
 	std::cout << "wrong_meta Type: " << wrong_meta->getType() << " " << std::endl;
 	std::cout << "wrong_cat Type: " << wrong_cat->getType() << " " << std::endl;
+	std::cout << "wrong_meta makeSound() test" << std::endl;
 	wrong_meta->makeSound();
+	std::cout << "wrong_cat makeSound() test" << std::endl;
 	wrong_cat->makeSound();
 
 	delete wrong_meta;
@@ -52,7 +62,9 @@ void	wrongAnimalTest(void) {
 
 int	main(void) {
 	exampleTest();
+	copyTest();
 	wrongAnimalTest();
-	system("leaks a.out | grep 'Process'");
+	std::cout << "\n===Check Memory Leaks===" << std::endl;
+	system("leaks a.out");
 	return 0;
 }
