@@ -37,7 +37,7 @@ void	deleteAnimalArray(Animal** arr, int arr_size) {
 
 void	classMemberFuncTest(void) {
 	int		arr_size = 10;
-	Animal*	animal_arr[arr_size];
+	Animal*	animal_arr[10];
 
 	setAnimalArray(animal_arr, arr_size);
 
