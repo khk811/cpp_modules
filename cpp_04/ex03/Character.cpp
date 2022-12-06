@@ -55,7 +55,6 @@ void	Character::equip(AMateria* m) {
 			return;
 		}
 	}
-	std::cout << "Error: Inventory is full" << std::endl;
 }
 
 void	Character::unequip(int idx) {
@@ -64,7 +63,6 @@ void	Character::unequip(int idx) {
 		this->inventory[idx] = NULL;
 		return;
 	}
-	std::cout << "Error: Cannot Unequip Invalid Object" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target) {
@@ -72,7 +70,6 @@ void	Character::use(int idx, ICharacter& target) {
 		this->inventory[idx]->use(target);
 		return;
 	}
-	std::cout << "Error: Cannot Use Invalid Object" << std::endl;
 }
 
 Character&	Character::operator=(Character const& src) {
