@@ -37,7 +37,6 @@ void	MateriaSource::learnMateria(AMateria* m) {
 			return;
 		}
 	}
-	std::cout << "Error: Materia slot is full" << std::endl;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type) {
@@ -49,7 +48,6 @@ AMateria*	MateriaSource::createMateria(std::string const & type) {
 			}
 		}
 	}
-	std::cout << "Error: Invalid Materia type detected" << std::endl;
 	return NULL;
 }
 
