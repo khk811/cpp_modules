@@ -42,10 +42,16 @@ void	classMemberFuncTest(void) {
 	setAnimalArray(animal_arr, arr_size);
 
 	std::cout << "===class Dog, class Cat Member Function Test===" << std::endl;
+	// Animal class func test;
+	std::cout << "---Animal Class member function test---" << std::endl;
+	std::cout << "animal_arr[0] type: " << animal_arr[0]->getType() << std::endl;
+	animal_arr[0]->makeSound();
+	std::cout << "animal_arr[6] type: " << animal_arr[6]->getType() << std::endl;
+	animal_arr[6]->makeSound();
 	// setIdea(), printAllIdeas() test;
 	std::cout << "---basic setIdea(), printAllIdeas() test---" << std::endl;
 	animal_arr[0]->getBrain()->printAllIdeas();
-	animal_arr[2]->getBrain()->setIdea("Need to chaise squarrel!!");
+	animal_arr[2]->getBrain()->setIdea("Need to chaise squarrels!!");
 	animal_arr[2]->getBrain()->printAllIdeas();
 	animal_arr[7]->getBrain()->setIdea("I'm a lucky cat");
 	animal_arr[7]->getBrain()->printAllIdeas();
@@ -95,9 +101,29 @@ void	deepCopyTest(void) {
 	delete clone_cat;
 }
 
+void	extraTest(void) {
+	std::cout << "\n===Extra Test: Up-casting, Down-casting===" << std::endl;
+	std::cout << "---Up-casting---" << std::endl;
+	Dog		hot_dog;
+	Animal*	hot_animal = &(hot_dog); // upcasting;
+
+	std::cout << "hot_dog type: " << hot_dog.getType() << std::endl;
+	hot_dog.makeSound();
+	std::cout << "hot_animal type: " << hot_animal->getType() << std::endl;
+	hot_animal->makeSound();
+	hot_animal->getBrain()->printAllIdeas();
+
+	std::cout << "---Down-casting---" << std::endl;
+	Dog*	cool_dog = (Dog*)hot_animal; // downcasting;
+
+	std::cout << "cool_dog type: " << cool_dog->getType() << std::endl;
+	cool_dog->makeSound();
+}
+
 int	main(void) {
 	classMemberFuncTest();
 	deepCopyTest();
+	extraTest();
 	std::cout << "\n=== Check Memory Leaks ===" << std::endl;
 	system("leaks a.out");
 	return 0;
