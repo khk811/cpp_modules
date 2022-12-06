@@ -1,11 +1,12 @@
+#include "AAnimal.hpp"
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-void	setAnimalArray(Animal** arr, int arr_size) {
+void	setAnimalArray(AAnimal** arr, int arr_size) {
 	if (arr_size < 0)
 		return;
-	std::cout << "===Animal Array Construction===" << std::endl;
+	std::cout << "===AAnimal Array Construction===" << std::endl;
 	for (int i = 0; i < arr_size; i++)
 	{
 		if (0 <= i && i < (arr_size / 2)) {
@@ -19,10 +20,10 @@ void	setAnimalArray(Animal** arr, int arr_size) {
 	}
 }
 
-void	deleteAnimalArray(Animal** arr, int arr_size) {
+void	deleteAnimalArray(AAnimal** arr, int arr_size) {
 	if (arr_size < 0)
 		return ;
-	std::cout << "===Animal Array Destruction===" << std::endl;
+	std::cout << "===AAnimal Array Destruction===" << std::endl;
 	for (int i = 0; i < arr_size; i++)
 	{
 		if (arr[i]->getType() == "Dog") {
@@ -37,12 +38,18 @@ void	deleteAnimalArray(Animal** arr, int arr_size) {
 
 void	classMemberFuncTest(void) {
 	int		arr_size = 10;
-	Animal*	animal_arr[arr_size];
+	AAnimal*	animal_arr[arr_size];
 
 	setAnimalArray(animal_arr, arr_size);
 
-	std::cout << "===class Dog, class Cat Member Function Test===" << std::endl;
-	// setIdea(), printAllIdeas() test;
+	std::cout << "\n===class Dog, class Cat Member Function Test===" << std::endl;
+	// Animal class func test;
+	std::cout << "---AAnimal Class member function test---" << std::endl;
+	std::cout << "animal_arr[0] type: " << animal_arr[0]->getType() << std::endl;
+	animal_arr[0]->makeSound();
+	std::cout << "animal_arr[6] type: " << animal_arr[6]->getType() << std::endl;
+	animal_arr[6]->makeSound();
+	// getBrain(), setIdea(), printAllIdeas() test;
 	std::cout << "---basic setIdea(), printAllIdeas() test---" << std::endl;
 	animal_arr[0]->getBrain()->printAllIdeas();
 	animal_arr[2]->getBrain()->setIdea("Need to chaise squarrel!!");
@@ -64,8 +71,7 @@ void	classMemberFuncTest(void) {
 
 void	deepCopyTest(void) {
 	// deep cp check;
-	std::cout << "" << std::endl;
-	std::cout << "===Deep Copy Test===" << std::endl;
+	std::cout << "\n===Deep Copy Test===" << std::endl;
 	std::cout << "---Copy Assignment Operator test---" << std::endl;
 	const Cat*	const_cat = new Cat();
 	Cat*		copy_cat = new Cat();
@@ -95,9 +101,36 @@ void	deepCopyTest(void) {
 	delete clone_cat;
 }
 
+void	instanceTest(void) {
+	Dog			hot_dog;
+	AAnimal*	hot_cat = new Cat();
+	Animal		base_animal;
+	// AAnimal		abstract_animal;
+
+	std::cout << "\n===Instantiation Test===" << std::endl;
+	std::cout << "---Class Dog Instantiation Test---" << std::endl;
+	std::cout << "Dog hot_dog type: " << hot_dog.getType() << std::endl;
+	hot_dog.makeSound();
+	hot_dog.getBrain()->setIdea("ketchup please!");
+	hot_dog.getBrain()->printAllIdeas();
+	std::cout << "---Class Cat Instantiation Test---" << std::endl;
+	std::cout << "Cat hot_cat type: " << hot_cat->getType() << std::endl;
+	hot_cat->makeSound();
+	hot_cat->getBrain()->setIdea("I'm not a hot dog");
+	hot_cat->getBrain()->printAllIdeas();
+	std::cout << "---Class Animal Instantiation Test---" << std::endl;
+	std::cout << "Animal base_animal type: " << base_animal.getType() << std::endl;
+	base_animal.makeSound();
+	// std::cout << "---Class AAnimal Instantiation Test---" << std::endl;
+	// std::cout << "AAnimal abstract_animal type: " << abstract_animal.getType() << std::endl;
+	// abstract_animal.makeSound();
+	delete hot_cat;
+}
+
 int	main(void) {
 	classMemberFuncTest();
 	deepCopyTest();
+	instanceTest();
 	std::cout << "\n=== Check Memory Leaks ===" << std::endl;
 	system("leaks a.out");
 	return 0;

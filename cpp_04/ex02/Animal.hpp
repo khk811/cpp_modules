@@ -11,11 +11,11 @@ protected:
 public:
 	Animal();
 	Animal(Animal const& src);
-	virtual			~Animal();
-	Animal&			operator=(Animal const &src);
-	std::string		getType() const;
-	virtual Brain*	getBrain() const = 0;
-	virtual void	makeSound() const = 0;
+	virtual				~Animal();
+	Animal&				operator=(Animal const &src);
+	std::string			getType() const;
+	virtual Brain*		getBrain() const;
+	virtual void		makeSound() const;
 };
 
 

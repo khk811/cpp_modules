@@ -23,6 +23,10 @@ std::string	Animal::getType() const {
 	return this->type;
 }
 
+Brain*	Animal::getBrain() const {
+	return NULL;
+}
+
 Animal&		Animal::operator=(Animal const &src) {
 	std::cout << "Animal Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
