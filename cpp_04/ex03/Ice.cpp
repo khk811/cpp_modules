@@ -23,8 +23,6 @@ void	Ice::use(ICharacter& target) {
 
 Ice&	Ice::operator=(Ice const& src) {
 	std::cout << "Ice Copy Assignment Operator Called" << std::endl;
-	if (this != &src) {
-		this->type = src.type;
-	}
+	(void)src;
 	return *this;
 }

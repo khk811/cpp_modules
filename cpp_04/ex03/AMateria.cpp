@@ -29,8 +29,6 @@ void	AMateria::use(ICharacter& target) {
 
 AMateria&	AMateria::operator=(AMateria const& src) {
 	std::cout << "AMateria Default Constructor Called" << std::endl;
-	if (this != &src) {
-		this->type = src.type;
-	}
+	(void)src;
 	return *this;
 }

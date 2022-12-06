@@ -23,8 +23,6 @@ void	Cure::use(ICharacter& target) {
 
 Cure&	Cure::operator=(Cure const& src) {
 	std::cout << "Cure Copy Assignment Operator Called" << std::endl;
-	if (this != &src) {
-		this->type = src.type;
-	}
+	(void)src;
 	return *this;
 }
