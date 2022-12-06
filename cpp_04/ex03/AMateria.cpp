@@ -24,7 +24,7 @@ std::string const&	AMateria::getType() const {
 }
 
 void	AMateria::use(ICharacter& target) {
-	(void)target;
+	std::cout << "( Use Materia to " << target.getName() << " )" << std::endl;
 }
 
 AMateria&	AMateria::operator=(AMateria const& src) {

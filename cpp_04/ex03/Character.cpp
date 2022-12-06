@@ -51,21 +51,28 @@ void	Character::equip(AMateria* m) {
 	{
 		if (this->inventory[i] == NULL) {
 			this->inventory[i] = m;
-			break;
+			std::cout << this->name << " equiped " << m->getType() << std::endl;
+			return;
 		}
 	}
+	std::cout << "Error: Inventory is full" << std::endl;
 }
 
 void	Character::unequip(int idx) {
 	if ((0 <= idx && idx < 4) && this->inventory[idx] != NULL) {
+		std::cout << this->name << " unequiped " << this->inventory[idx]->getType() << std::endl;
 		this->inventory[idx] = NULL;
+		return;
 	}
+	std::cout << "Error: Cannot Unequip Invalid Object" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target) {
 	if ((0 <= idx && idx < 4) && this->inventory[idx] != NULL) {
 		this->inventory[idx]->use(target);
+		return;
 	}
+	std::cout << "Error: Cannot Use Invalid Object" << std::endl;
 }
 
 Character&	Character::operator=(Character const& src) {
