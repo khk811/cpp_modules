@@ -46,6 +46,7 @@ void	copyTest(void) {
 }
 
 void	wrongAnimalTest(void) {
+	std::cout << "\n===WrongAnimal Test===" << std::endl;
 	const WrongAnimal*	wrong_meta = new WrongAnimal();
 	const WrongAnimal*	wrong_cat = new WrongCat();
 

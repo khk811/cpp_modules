@@ -6,7 +6,7 @@
 class WrongAnimal
 {
 protected:
-	std::string	type;
+	std::string		type;
 public:
 	WrongAnimal();
 	WrongAnimal(WrongAnimal const& src);
