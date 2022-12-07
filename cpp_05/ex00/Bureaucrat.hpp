@@ -14,8 +14,8 @@ public:
 	Bureaucrat(Bureaucrat const& src);
 	Bureaucrat(std::string const bureau_name, int bureau_grade);
 	~Bureaucrat();
-	std::string const	getName();
-	int					getGrade();
+	std::string const	getName() const;
+	int					getGrade() const;
 	void				increaseGrade();
 	void				decreaseGrade();
 	Bureaucrat&			operator=(Bureaucrat const& src);
@@ -31,5 +31,7 @@ public:
 	};
 
 };
+
+std::ostream&			operator<<(std::ostream& ostrm, Bureaucrat const& src);
 
 #endif

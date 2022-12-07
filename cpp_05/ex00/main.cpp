@@ -16,10 +16,10 @@ int	main(void) {
 	} catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	std::cout << "James's grade: " << james.getGrade() << std::endl;
-	std::cout << "Thomas's grade: " << thomas.getGrade() << std::endl;
-	std::cout << "Steve's grade: " << steve.getGrade() << std::endl;
-	std::cout << "Romeo's grade: " << romeo.getGrade() << std::endl;
+	std::cout << james << std::endl;
+	std::cout << thomas << std::endl;
+	std::cout << steve << std::endl;
+	std::cout << romeo << std::endl;
 	// system("leaks a.out");
 	return 0;
 }
