@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 private:
@@ -19,8 +21,8 @@ public:
 	~Form();
 	std::string const	getName() const;
 	bool				getIsSigned() const;
-	int			getSignGrade() const;
-	int			getExecGrade() const;
+	int					getSignGrade() const;
+	int					getExecGrade() const;
 	void				beSigned(Bureaucrat& bureau);
 	Form&				operator=(Form const& src);
 	class GradeTooHighException : public std::exception

@@ -17,7 +17,7 @@ Form::Form(std::string form_name, int form_sign_grade, int form_exec_grade)
 	this->is_signed = false;
 	if (this->sign_grade < 1 || this->exec_grade < 1) {
 		throw Form::GradeTooHighException();
-	} else if (this->sign_grade > 150 || this->sign_grade > 150) {
+	} else if (this->sign_grade > 150 || this->exec_grade > 150) {
 		throw Form::GradeTooLowException();
 	}
 }
@@ -43,7 +43,13 @@ int	Form::getExecGrade() const {
 }
 
 void	Form::beSigned(Bureaucrat& bureau) {
-	(void)bureau;
+	if (bureau.getGrade() > this->exec_grade) {
+		std::cout << bureau.getName() << " couldn't sign ";
+		std::cout << this->sign_grade << " because ";
+		throw Form::GradeTooLowException();
+	} else {
+		this->is_signed = true;
+	}
 }
 
 Form&	Form::operator=(Form const& src) {
@@ -63,6 +69,14 @@ const char*	Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream&	operator<<(std::ostream& ostrm, Form const& src) {
-	ostrm << "(insert Form overloaded string here)" << src.getName();
+	ostrm << "Form " << src.getName();
+	ostrm << ", signed " << src.getIsSigned();
+	if (src.getIsSigned() == true) {
+		ostrm << "(true)";
+	} else {
+		ostrm << "(false)";
+	}
+	ostrm << ", required sign grade " << src.getSignGrade();
+	ostrm << ", required execution grade " << src.getExecGrade();
 	return ostrm;
 }

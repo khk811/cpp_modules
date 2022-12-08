@@ -50,6 +50,13 @@ void	Bureaucrat::decreaseGrade() {
 	}
 }
 
+void	Bureaucrat::signForm(Form& to_sign) {
+	to_sign.beSigned(*this);
+	if (to_sign.getIsSigned() == true) {
+		std::cout << this->name << " signed " << to_sign.getName() << std::endl;
+	}
+}
+
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& src) {
 	std::cout << "Bureaucrat Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
