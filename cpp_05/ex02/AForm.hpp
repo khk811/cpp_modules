@@ -35,6 +35,14 @@ public:
 	{
 		const char*		what() const throw();
 	};
+	class FormNotSigned : public std::exception
+	{
+		const char*		what() const throw();
+	};
+	class FormAlreadySigned : public std::exception
+	{
+		const char*		what() const throw();
+	};
 };
 
 std::ostream&			operator<<(std::ostream& ostrm, AForm const& src);

@@ -22,6 +22,7 @@ public:
 	void				increaseGrade();
 	void				decreaseGrade();
 	void				signForm(AForm& to_sign);
+	void				executeForm(AForm const & form);
 	Bureaucrat&			operator=(Bureaucrat const& src);
 	class GradeTooHighException : public std::exception
 	{
@@ -31,7 +32,6 @@ public:
 	{
 		const char*		what() const throw();
 	};
-
 };
 
 std::ostream&			operator<<(std::ostream& ostrm, Bureaucrat const& src);

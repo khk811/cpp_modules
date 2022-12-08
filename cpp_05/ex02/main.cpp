@@ -15,6 +15,7 @@ int	main(void) {
 	AForm*		robot = new RobotomyRequestForm("delta");
 	AForm*		robot2 = new RobotomyRequestForm("gamma");
 	AForm*		wtf = new PresidentialPardonForm("Alexandra the mutant");
+	// AForm*		qwer = new PresidentialPardonForm("dummy");
 
 	try {
 		james.increaseGrade();
@@ -30,10 +31,12 @@ int	main(void) {
 		robot->execute(thomas);
 		riam.signForm(*robot2);
 		robot2->execute(riam);
-		thomas.signForm(*wtf);
-		wtf->execute(romeo);
+		// thomas.signForm(*wtf);
+		// wtf->execute(thomas);
+		// thomas.signForm(*wtf);
+		romeo.signForm(*wtf);
 	} catch (std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 		// delete shrubbery;
 	}
 	std::cout << james << std::endl;

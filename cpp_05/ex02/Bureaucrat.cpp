@@ -57,6 +57,11 @@ void	Bureaucrat::signForm(AForm& to_sign) {
 	}
 }
 
+void	Bureaucrat::executeForm(AForm const & form) {
+	form.execute(*this);
+	std::cout << this->name << " executed " << form.getName() << std::endl;
+}
+
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& src) {
 	std::cout << "Bureaucrat Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
@@ -66,11 +71,11 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& src) {
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw() {
-	return "The grade is too high";
+	return "the grade of the bureaucrat is too high";
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw() {
-	return "The grade is too low";
+	return "the grade of the bureaucrat is too low";
 }
 
 std::ostream&	operator<<(std::ostream& ostrm, Bureaucrat const& src) {
