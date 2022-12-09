@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat() : name("[no_name]"), grade(75) {
 	std::cout << "Bureaucrat Default Constructor Called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const& src) {
+Bureaucrat::Bureaucrat(Bureaucrat const& src) : name(src.name) {
 	std::cout << "Bureaucrat Copy Constructor Called" << std::endl;
 	*this = src;
 }
