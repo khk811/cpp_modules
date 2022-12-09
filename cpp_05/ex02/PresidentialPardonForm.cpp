@@ -1,8 +1,8 @@
 #include "PresidentialPardonForm.hpp"
 
 void	PresidentialPardonForm::executeFormAction() const {
-	std::cout << "To " << this->target;
-	std::cout << ": You've been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << this->target;
+	std::cout << " been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm()

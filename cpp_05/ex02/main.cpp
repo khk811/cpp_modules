@@ -31,8 +31,8 @@ int	main(void) {
 		robot->execute(thomas);
 		riam.signForm(*robot2);
 		robot2->execute(riam);
-		// thomas.signForm(*wtf);
-		// wtf->execute(thomas);
+		thomas.signForm(*wtf);
+		wtf->execute(thomas);
 		// thomas.signForm(*wtf);
 		romeo.signForm(*wtf);
 	} catch (std::exception& e) {

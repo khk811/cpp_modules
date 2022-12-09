@@ -5,9 +5,9 @@ void RobotomyRequestForm::executeFormAction() const {
 
 	std::cout << "(insert drilling noize here)" << std::endl;
 	if (chance % 2 == 0) {
-		std::cout << "(" << chance << "): Robotomize Success" << std::endl;
+		std::cout << "Success: " << this->target << " has been robotomized" << std::endl;
 	} else {
-		std::cout << "(" << chance << ") : Robotomize Failed" << std::endl;
+		std::cout << "Fail: Robotomize "<< this->target << " failed" << std::endl;
 	}
 }
 

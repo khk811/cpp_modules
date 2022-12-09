@@ -48,10 +48,10 @@ void	AForm::beSigned(Bureaucrat& bureau) {
 	} else {
 		std::cout << bureau.getName() << " couldn't sign ";
 		std::cout << this->name << " because ";
-		if (this->is_signed == true) {
-			throw AForm::FormAlreadySigned();
-		} else {
+		if (bureau.getGrade() > this->sign_grade) {
 			throw AForm::GradeTooLowException();
+		} else {
+			throw AForm::FormAlreadySigned();
 		}
 	}
 }
@@ -62,10 +62,10 @@ void	AForm::execute(Bureaucrat const& executor) const {
 	} else {
 		std::cout << executor.getName();
 		std::cout << " couldn't execute " << this->name << " because ";
-		if (this->is_signed == false) {
-			throw AForm::FormNotSigned();
-		} else {
+		if (executor.getGrade() > this->sign_grade) {
 			throw AForm::GradeTooLowException();
+		} else {
+			throw AForm::FormNotSigned();
 		}
 	}
 }
@@ -79,19 +79,19 @@ AForm&	AForm::operator=(AForm const& src) {
 }
 
 const char*	AForm::GradeTooHighException::what() const throw() {
-	return "the grade of the form is too high";
+	return "the grade is too high";
 }
 
 const char*	AForm::GradeTooLowException::what() const throw() {
-	return "the grade of the form is too low";
+	return "the grade is too low";
 }
 
 const char*	AForm::FormNotSigned::what() const throw() {
-	return "the target form haven't signed";
+	return "the form haven't signed";
 }
 
 const char*	AForm::FormAlreadySigned::what() const throw() {
-	return "the target form has already signed";
+	return "the form has already signed";
 }
 
 std::ostream&	operator<<(std::ostream& ostrm, AForm const& src) {

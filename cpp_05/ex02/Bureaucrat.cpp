@@ -71,11 +71,11 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& src) {
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw() {
-	return "the grade of the bureaucrat is too high";
+	return "the grade is too high";
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw() {
-	return "the grade of the bureaucrat is too low";
+	return "the grade is too low";
 }
 
 std::ostream&	operator<<(std::ostream& ostrm, Bureaucrat const& src) {
