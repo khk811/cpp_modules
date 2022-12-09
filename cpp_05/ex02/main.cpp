@@ -74,6 +74,15 @@ void	shrubberyTest(void) {
 	std::cout << *seocho_cluster << std::endl;
 	try
 	{
+		std::cout << "\n---execute unsigned form : Grade " << brian.getGrade() << "---" << std::endl;
+		brian.executeForm(*seocho_cluster);
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
 		std::cout << "\n---signForm(), executeForm() : Grade " << brian.getGrade() << "---" << std::endl;
 		brian.signForm(*gaepo_cluster);
 		std::cout << "=>" << *gaepo_cluster << std::endl;
@@ -116,6 +125,15 @@ void	robotomyTest(void) {
 	std::cout << *gamma << std::endl;
 	try
 	{
+		std::cout << "\n---execute unsigned form : Grade " << bettany.getGrade() << "---" << std::endl;
+		bettany.executeForm(*alpha);
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
 		std::cout << "\n---signForm(), executeForm() : Grade " << bettany.getGrade() << "---" << std::endl;
 		bettany.signForm(*alpha);
 		std::cout << "=>" << *alpha << std::endl;
@@ -156,6 +174,15 @@ void	presidentialTest(void) {
 	std::cout << "\n---Before sign, execute---" << std::endl;
 	std::cout << *epsilon << std::endl;
 	std::cout << *omega << std::endl;
+	try
+	{
+		std::cout << "\n---execute unsigned form : Grade " << agent_b.getGrade() << "---" << std::endl;
+		agent_b.executeForm(*epsilon);
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	try
 	{
 		std::cout << "\n---signForm(), executeForm() : Grade " << agent_b.getGrade() << "---" << std::endl;
