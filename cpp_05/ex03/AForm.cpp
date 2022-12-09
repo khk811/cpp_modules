@@ -43,16 +43,12 @@ int	AForm::getExecGrade() const {
 }
 
 void	AForm::beSigned(Bureaucrat& bureau) {
-	if (this->is_signed == false && bureau.getGrade() <= this->sign_grade) {
+	if (bureau.getGrade() <= this->sign_grade) {
 		this->is_signed = true;
 	} else {
 		std::cout << bureau.getName() << " couldn't sign ";
 		std::cout << this->name << " because ";
-		if (bureau.getGrade() > this->sign_grade) {
-			throw AForm::GradeTooLowException();
-		} else {
-			throw AForm::FormAlreadySigned();
-		}
+		throw AForm::GradeTooLowException();
 	}
 }
 
@@ -88,10 +84,6 @@ const char*	AForm::GradeTooLowException::what() const throw() {
 
 const char*	AForm::FormNotSigned::what() const throw() {
 	return "the form haven't signed";
-}
-
-const char*	AForm::FormAlreadySigned::what() const throw() {
-	return "the form has already signed";
 }
 
 std::ostream&	operator<<(std::ostream& ostrm, AForm const& src) {
