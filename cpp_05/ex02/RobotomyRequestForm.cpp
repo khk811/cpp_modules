@@ -23,7 +23,8 @@ RobotomyRequestForm::RobotomyRequestForm(std::string form_target)
 	this->target = form_target;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& src) {
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& src)
+: AForm((std::string)src.getName(), (int)src.getSignGrade(), (int)src.getExecGrade()) {
 	std::cout << "RobotomyRequestForm Copy Constructor Called" << std::endl;
 	*this = src;
 }
@@ -34,7 +35,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& src) {
 	std::cout << "RobotomyRequestForm Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
-		*(this) = src;
+		this->target = src.target;
 	}
 	return *this;
 }

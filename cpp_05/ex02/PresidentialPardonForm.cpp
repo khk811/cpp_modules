@@ -15,21 +15,22 @@ PresidentialPardonForm::PresidentialPardonForm(std::string form_target)
 : AForm("PresidentialPardonForm", 25, 5) {
 	std::cout << "PresidentialPardonForm Parameter Constructor Called" << std::endl;
 	this->target = form_target;
-
 }
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& src) {
+
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& src)
+: AForm((std::string)src.getName(), (int)src.getSignGrade(), (int)src.getExecGrade()) {
 	std::cout << "PresidentialPardonForm Copy Constructor Called" << std::endl;
 	*this = src;
-
 }
+
 PresidentialPardonForm::~PresidentialPardonForm() {
 	std::cout << "PresidentialPardonForm Destructor Called" << std::endl;
-
 }
+
 PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm const& src) {
 	std::cout << "PresidentialPardonForm Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
-		*(this) = src;
+		this->target = src.target;
 	}
 	return *this;
 }

@@ -33,7 +33,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string form_target)
 	this->target = form_target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& src) {
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& src)
+: AForm((std::string)src.getName(), (int)src.getSignGrade(), (int)src.getExecGrade()) {
 	std::cout << "ShrubberyCreationForm Copy Constructor Called" << std::endl;
 	*this = src;
 }
@@ -45,7 +46,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm const& src) {
 	std::cout << "ShrubberyCreationForm Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
-		*(this) = src;
+		this->target = src.target;
 	}
 	return *this;
 }
