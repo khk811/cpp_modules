@@ -34,7 +34,7 @@ void	instantiationTest(void) {
 	std::cout << "valid_bureau_a: " << valid_bureau_a << std::endl;
 	std::cout << "valid_bureau_b: " << valid_bureau_b << std::endl;
 
-	// init bureaucrat with impossible grede;
+	// init bureaucrat with impossible grade;
 
 	// std::cout << "\n---instantiation Test (invalid)---" << std::endl;
 	// Bureaucrat	invalid_bureau("(invalid)", 0);
