@@ -58,7 +58,7 @@ void	AForm::execute(Bureaucrat const& executor) const {
 	} else {
 		std::cout << executor.getName();
 		std::cout << " couldn't execute " << this->name << " because ";
-		if (executor.getGrade() > this->sign_grade) {
+		if (executor.getGrade() > this->exec_grade) {
 			throw AForm::GradeTooLowException();
 		} else {
 			throw AForm::FormNotSigned();
