@@ -12,13 +12,13 @@ void RobotomyRequestForm::executeFormAction() const {
 }
 
 RobotomyRequestForm::RobotomyRequestForm()
-: AForm("RobotomyRequestForm", 72, 45) {
+: AForm("robotomy request", 72, 45) {
 	std::cout << "RobotomyRequestForm Default Constructor Called" << std::endl;
 	this->target = "[Unknown]";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string form_target)
-: AForm("RobotomyRequestForm", 72, 45) {
+: AForm("robotomy request", 72, 45) {
 	std::cout << "RobotomyRequestForm Parameter Constructor Called" << std::endl;
 	this->target = form_target;
 }

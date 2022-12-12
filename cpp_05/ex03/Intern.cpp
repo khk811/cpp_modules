@@ -2,7 +2,7 @@
 
 Intern::form_type	Intern::searchMatchingForm(std::string form_name) {
 	std::string			form_type[3] = {"ShrubberyCreationForm", \
-										"RobotomyRequestForm", \
+										"robotomy request", \
 										"PresidentialPardonForm"};
 	Intern::form_type	search_result = FORM_NOTFOUND;
 

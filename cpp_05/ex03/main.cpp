@@ -1,30 +1,54 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
-int	main(void) {
-	Bureaucrat	rupaul("RuPaul", 1);
-	Bureaucrat	steve("Steve", 140);
-	Bureaucrat	romeo("Romeo", 75);
-	Intern		julio;
-	AForm*		new_form = NULL;
+void	basicTest(void) {
+	std::cout << "\n===Basic Test (Orthodox Canonique)===" << std::endl;
+	const Intern	const_default_intern;
+	std::cout << "\n---Copy Constructor Test---" << std::endl;
+	Intern*			copy_construct_intern = new Intern(const_default_intern);
 
-	try {
-		new_form = julio.makeForm("PresidentialPardonForm", "hyunkkim");
-		// rupaul.signForm(*new_form);
-		// rupaul.executeForm(*new_form);
-		romeo.signForm(*new_form);
-	} catch (std::exception& e) {
+	std::cout << "\n---Copy Assignment Operator Test---" << std::endl;
+	Intern			copy_assign_intern;
+
+	copy_assign_intern = const_default_intern;
+	delete copy_construct_intern;
+}
+
+void	makeFormTest(void) {
+	Bureaucrat	agent_a("Agent_a", 1);
+	Intern		intern_b;
+	AForm*		the_form = NULL;
+
+	std::cout << "\n===class Intern makeForm() Test===" << std::endl;
+	try
+	{
+		std::cout << "\n---Try makeForm() with exist form type---" << std::endl;
+		the_form = intern_b.makeForm("robotomy request", "Bender");
+		agent_a.signForm(*the_form);
+		agent_a.executeForm(*the_form);
+		delete the_form;
+	}
+	catch(const std::exception& e)
+	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << rupaul << std::endl;
-	std::cout << steve << std::endl;
-	std::cout << romeo << std::endl;
-	if (new_form != NULL) {
-		delete new_form;
+	try
+	{
+		std::cout << "\n---Try makeForm() with non-exist form type---" << std::endl;
+		the_form = intern_b.makeForm("waste disposal", "target_c");
+		agent_a.signForm(*the_form);
+		agent_a.executeForm(*the_form);
+		delete the_form;
 	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+
+int	main(void) {
+	basicTest();
+	makeFormTest();
 	std::cout << "\n===Check Memory Leak===" << std::endl;
 	system("leaks a.out");
 	return 0;
