@@ -15,11 +15,11 @@ void	basicTest(void) {
 }
 
 void	makeFormTest(void) {
+	std::cout << "\n===class Intern makeForm() Test===" << std::endl;
 	Bureaucrat	agent_a("Agent_a", 1);
 	Intern		intern_b;
 	AForm*		the_form = NULL;
 
-	std::cout << "\n===class Intern makeForm() Test===" << std::endl;
 	try
 	{
 		std::cout << "\n---Try makeForm() with exist form type---" << std::endl;
