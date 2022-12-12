@@ -70,8 +70,8 @@ void	shrubberyTest(void) {
 	Bureaucrat	chris("Chris", 150);
 
 	std::cout << "\n---Before sign, execute---" << std::endl;
-	std::cout << *gaepo_cluster << std::endl;
 	std::cout << *seocho_cluster << std::endl;
+	std::cout << *gaepo_cluster << std::endl;
 	try
 	{
 		std::cout << "\n---execute unsigned form : Grade " << brian.getGrade() << "---" << std::endl;

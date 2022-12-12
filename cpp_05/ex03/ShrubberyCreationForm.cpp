@@ -22,13 +22,13 @@ void	ShrubberyCreationForm::executeFormAction() const {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-: AForm("ShrubberyCreationForm", 145, 137) {
+: AForm("shrubbery creation", 145, 137) {
 	std::cout << "ShrubberyCreationForm Default Constructor Called" << std::endl;
 	this->target = "[Unknown]";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string form_target)
-: AForm("ShrubberyCreationForm", 145, 137) {
+: AForm("shrubbery creation", 145, 137) {
 	std::cout << "ShrubberyCreationForm Parameter Constructor Called" << std::endl;
 	this->target = form_target;
 }

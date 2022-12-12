@@ -1,9 +1,10 @@
 #include "RobotomyRequestForm.hpp"
 
 void RobotomyRequestForm::executeFormAction() const {
-	int	chance = rand() % 100 + 1;
+	srand((unsigned int)time(NULL));
+	int	chance = (rand() % 10) + 1;
 
-	std::cout << "(insert drilling noize here)" << std::endl;
+	std::cout << "DRRR...DRRRRR...DRRRRRRRRRRR!!!!" << std::endl;
 	if (chance % 2 == 0) {
 		std::cout << "Success: " << this->target << " has been robotomized" << std::endl;
 	} else {

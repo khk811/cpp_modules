@@ -2,17 +2,17 @@
 
 void	PresidentialPardonForm::executeFormAction() const {
 	std::cout << this->target;
-	std::cout << " been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm()
-: AForm("PresidentialPardonForm", 25, 5) {
+: AForm("presidential pardon", 25, 5) {
 	std::cout << "PresidentialPardonForm Default Constructor Called" << std::endl;
 	this->target = "[Unknown]";
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string form_target)
-: AForm("PresidentialPardonForm", 25, 5) {
+: AForm("presidential pardon", 25, 5) {
 	std::cout << "PresidentialPardonForm Parameter Constructor Called" << std::endl;
 	this->target = form_target;
 

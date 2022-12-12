@@ -1,14 +1,15 @@
 #include "Intern.hpp"
 
 Intern::form_type	Intern::searchMatchingForm(std::string form_name) {
-	std::string			form_type[3] = {"ShrubberyCreationForm", \
+	std::string			form_type[3] = {"shrubbery creation", \
 										"robotomy request", \
-										"PresidentialPardonForm"};
+										"presidential pardon"};
 	Intern::form_type	search_result = FORM_NOTFOUND;
 
 	for (int i = 0; i < 3; i++)
 	{
 		if (form_type[i] == form_name) {
+			std::cout << "Intern creates " << form_name << std::endl;
 			search_result = (Intern::form_type)i;
 		}
 	}
