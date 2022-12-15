@@ -40,6 +40,8 @@ bool	ScalarConvert::isValidChar(char first_char) {
 bool	ScalarConvert::isScalarType(std::string input) {
 	size_t	idx = 0;
 	int		total_dot = 0;
+	int		total_f = 0;
+	int		total_non_digit = 0;
 
 	if (isValidChar(input[idx]) == false) {
 		return false;
@@ -55,27 +57,27 @@ bool	ScalarConvert::isScalarType(std::string input) {
 		if (!isdigit(input[i])) {
 			if (isDot(input[i])) {
 				total_dot++;
-				if (total_dot != 1) {
-					return false;
-				}
 			} else if (input[i] == 'f') {
-				if (i != input.length() - 1) {
-					return false;
-				} else {
-					this->input_type = TYPE_FLOAT;
-					return true;
-				}
+				total_f++;
 			} else {
-				return false;
+				total_non_digit++;
 			}
 		}
 	}
-	if (total_dot == 0) {
-		this->input_type = TYPE_INT;
+	if (total_non_digit == 0 && total_dot <= 1 && total_f <= 1) {
+		if (total_dot == 1) {
+			if (total_f == 1) {
+				this->input_type = TYPE_FLOAT;
+			} else {
+				this->input_type = TYPE_DOUBLE;
+			}
+		} else {
+			this->input_type = TYPE_INT;
+		}
+		return true;
 	} else {
-		this->input_type = TYPE_DOUBLE;
+		return false;
 	}
-	return true;
 }
 
 ScalarConvert::ScalarConvert() : raw_input("42"), input_type(TYPE_INT) {
