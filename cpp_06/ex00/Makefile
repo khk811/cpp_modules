@@ -1,3 +1,3 @@
-SRCS = main.cpp Convert.cpp
+SRCS = main.cpp ScalarConvert.cpp
 
 include ../template.mk
