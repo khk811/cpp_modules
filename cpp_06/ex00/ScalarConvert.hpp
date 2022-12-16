@@ -16,8 +16,7 @@ private:
 		TYPE_FLOAT,
 		TYPE_DOUBLE,
 		TYPE_INFNAN,
-		TYPE_INFNANF,
-		TYPE_ERROR
+		TYPE_INFNANF
 	};
 	std::string					raw_input;
 	ScalarConvert::scalar_type	input_type;
@@ -25,27 +24,28 @@ private:
 	bool						isInputChar();
 	void						countStringComponent(int& dot, int& f, int& non_digit);
 	bool						isInputScalarType();
+	bool						isOverflow(ScalarConvert::scalar_type type);
 	void						printChar(char to_print);
 	void						printInt(int to_print);
 	void						printFloat(float to_print);
 	void						printDouble(double to_print);
-	bool						isOverflow(ScalarConvert::scalar_type type);
+	void						printInfNan();
+	void						strToChar();
+	void						strToCInt();
+	void						strToFloat();
+	void						strToDouble();
 public:
 	ScalarConvert();
 	ScalarConvert(std::string raw_arg);
 	ScalarConvert(ScalarConvert const& src);
 	~ScalarConvert();
 	void						printInputNType();
-	void	strToChar();
-	void	strToCInt();
-	void	strToFloat();
-	void	strToDouble();
 	ScalarConvert&				operator=(ScalarConvert const& src);
 	class InvalidInput : public std::exception
 	{
 		const char*				what() const throw();
 	};
-	class inputOutOfRange : public std::exception
+	class InputOutOfRange : public std::exception
 	{
 		const char*				what() const throw();
 	};

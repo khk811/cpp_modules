@@ -1,5 +1,6 @@
 #include "ScalarConvert.hpp"
 
+// private member function;
 bool	ScalarConvert::isInputInfNan() {
 	std::string	inf_nan[3] = {"-inf", "+inf", "nan"};
 	std::string	inff_nanf[3] = {"-inff", "+inff", "nanf"};
@@ -72,6 +73,43 @@ bool	ScalarConvert::isInputScalarType() {
 	}
 }
 
+bool	ScalarConvert::isOverflow(ScalarConvert::scalar_type type) {
+	long double char_max = static_cast<long double>(std::numeric_limits<char>::max());
+	long double char_min = static_cast<long double>(std::numeric_limits<char>::lowest());
+	long double int_max = static_cast<long double>(std::numeric_limits<int>::max());
+	long double int_min = static_cast<long double>(std::numeric_limits<int>::lowest());
+	long double	float_max = static_cast<long double>(std::numeric_limits<float>::max());
+	long double	float_min = static_cast<long double>(std::numeric_limits<float>::lowest());
+	long double	double_max = static_cast<long double>(std::numeric_limits<double>::max());
+	long double	double_min = static_cast<long double>(std::numeric_limits<double>::lowest());
+
+	std::stringstream	ss(this->raw_input);
+	long double			to_cmp;
+
+	if (type == TYPE_CHAR) {
+		ss >> to_cmp;
+		if (char_min <= to_cmp && to_cmp <= char_max) {
+			return false;
+		}
+	} else if (type == TYPE_INT) {
+		ss >> to_cmp;
+		if (int_min <= to_cmp && to_cmp <= int_max) {
+			return false;
+		}
+	} else if (type == TYPE_FLOAT) {
+		ss >> to_cmp;
+		if (float_min <= to_cmp && to_cmp <= float_max) {
+			return false;
+		}
+	} else {
+		ss >> to_cmp;
+		if (double_min <= to_cmp && to_cmp <= double_max) {
+			return false;
+		}
+	}
+	return true;
+}
+
 void	ScalarConvert::printChar(char to_print) {
 	int	char_ascii = static_cast<int>(to_print);
 
@@ -126,95 +164,14 @@ void	ScalarConvert::printDouble(double to_print) {
 	}
 }
 
-bool	ScalarConvert::isOverflow(ScalarConvert::scalar_type type) {
-	long double char_max = static_cast<long double>(std::numeric_limits<char>::max());
-	long double char_min = static_cast<long double>(std::numeric_limits<char>::lowest());
-	long double int_max = static_cast<long double>(std::numeric_limits<int>::max());
-	long double int_min = static_cast<long double>(std::numeric_limits<int>::lowest());
-	long double	float_max = static_cast<long double>(std::numeric_limits<float>::max());
-	long double	float_min = static_cast<long double>(std::numeric_limits<float>::lowest());
-	long double	double_max = static_cast<long double>(std::numeric_limits<double>::max());
-	long double	double_min = static_cast<long double>(std::numeric_limits<double>::lowest());
-
-	std::stringstream	ss(this->raw_input);
-	long double			to_cmp;
-
-	if (type == TYPE_CHAR) {
-		ss >> to_cmp;
-		if (char_min <= to_cmp && to_cmp <= char_max) {
-			return false;
-		}
-	} else if (type == TYPE_INT) {
-		ss >> to_cmp;
-		if (int_min <= to_cmp && to_cmp <= int_max) {
-			return false;
-		}
-	} else if (type == TYPE_FLOAT) {
-		ss >> to_cmp;
-		if (float_min <= to_cmp && to_cmp <= float_max) {
-			return false;
-		}
-	} else {
-		ss >> to_cmp;
-		if (double_min <= to_cmp && to_cmp <= double_max) {
-			return false;
-		}
+void	ScalarConvert::printInfNan() {
+	if (this->input_type == TYPE_INFNANF) {
+		this->raw_input.erase(this->raw_input.length() - 1);
 	}
-	return true;
-}
-
-ScalarConvert::ScalarConvert() : raw_input("42"), input_type(TYPE_INT) {
-	std::cout << "ScalarConvert Default Constructor Called" << std::endl;
-}
-
-ScalarConvert::ScalarConvert(std::string raw_arg) : raw_input(raw_arg) {
-	std::cout << "ScalarConvert Parameter Constructor Called" << std::endl;
-	if (isInputChar() == false && isInputInfNan() == false) {
-		if (isInputScalarType() == false) {
-			this->input_type = TYPE_ERROR;
-			throw InvalidInput();
-		}
-	}
-}
-
-ScalarConvert::ScalarConvert(ScalarConvert const& src) {
-	std::cout << "ScalarConvert Copy Constructor Called" << std::endl;
-	*this = src;
-}
-
-ScalarConvert::~ScalarConvert() {
-	std::cout << "ScalarConvert Destructor Called" << std::endl;
-}
-
-void	ScalarConvert::printInputNType() {
-	switch (this->input_type)
-	{
-	case TYPE_CHAR:
-		std::cout << "input is Char" << std::endl;
-		strToChar();
-		break;
-	case TYPE_INT:
-		std::cout << "input is Int" << std::endl;
-		strToCInt();
-		break;
-	case TYPE_FLOAT:
-		std::cout << "input is Float" << std::endl;
-		strToFloat();
-		break;
-	case TYPE_DOUBLE:
-		std::cout << "input is Double" << std::endl;
-		strToDouble();
-		break;
-	case TYPE_INFNAN:
-		std::cout << "input is Inf(or NaN)" << std::endl;
-		break;
-	case TYPE_INFNANF:
-		std::cout << "input is Inff(or NaNf)" << std::endl;
-		break;
-	default:
-		throw InvalidInput();
-		break;
-	}
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << this->raw_input << "f" << std::endl;
+	std::cout << "double: " << this->raw_input << std::endl;
 }
 
 void	ScalarConvert::strToChar() {
@@ -239,7 +196,7 @@ void	ScalarConvert::strToCInt() {
 		printFloat(static_cast<float>(to_print));
 		printDouble(static_cast<double>(to_print));
 	} else {
-		throw inputOutOfRange();
+		throw InputOutOfRange();
 	}
 }
 
@@ -255,7 +212,7 @@ void	ScalarConvert::strToFloat() {
 		printFloat(to_print);
 		printDouble(static_cast<double>(to_print));
 	} else {
-		throw inputOutOfRange();
+		throw InputOutOfRange();
 	}
 
 }
@@ -270,7 +227,51 @@ void	ScalarConvert::strToDouble() {
 		printFloat(static_cast<float>(to_print));
 		printDouble(to_print);
 	} else {
-		throw inputOutOfRange();
+		throw InputOutOfRange();
+	}
+}
+
+// public member function;
+ScalarConvert::ScalarConvert() : raw_input("42"), input_type(TYPE_INT) {
+	std::cout << "ScalarConvert Default Constructor Called" << std::endl;
+}
+
+ScalarConvert::ScalarConvert(std::string raw_arg) : raw_input(raw_arg) {
+	std::cout << "ScalarConvert Parameter Constructor Called" << std::endl;
+	if (isInputChar() == false && isInputInfNan() == false) {
+		if (isInputScalarType() == false) {
+			throw InvalidInput();
+		}
+	}
+}
+
+ScalarConvert::ScalarConvert(ScalarConvert const& src) {
+	std::cout << "ScalarConvert Copy Constructor Called" << std::endl;
+	*this = src;
+}
+
+ScalarConvert::~ScalarConvert() {
+	std::cout << "ScalarConvert Destructor Called" << std::endl;
+}
+
+void	ScalarConvert::printInputNType() {
+	switch (this->input_type)
+	{
+	case TYPE_CHAR:
+		strToChar();
+		break;
+	case TYPE_INT:
+		strToCInt();
+		break;
+	case TYPE_FLOAT:
+		strToFloat();
+		break;
+	case TYPE_DOUBLE:
+		strToDouble();
+		break;
+	default:
+		printInfNan();
+		break;
 	}
 }
 
@@ -287,6 +288,6 @@ const char*	ScalarConvert::InvalidInput::what() const throw() {
 	return "the input is invalid";
 }
 
-const char*	ScalarConvert::inputOutOfRange::what() const throw() {
+const char*	ScalarConvert::InputOutOfRange::what() const throw() {
 	return "the input is out of range";
 }
