@@ -72,6 +72,43 @@ bool	ScalarConvert::isInputScalarType() {
 	}
 }
 
+void	ScalarConvert::printChar(char to_print) {
+	int	char_ascii = static_cast<int>(to_print);
+
+	std::cout << "char: ";
+	if (33 <= char_ascii && char_ascii <= 126) {
+		std::cout << "'" << to_print << "'" << std::endl;
+	} else {
+		std::cout << "Non displayable" << std::endl;
+	}
+}
+
+void	ScalarConvert::printInt(int to_print) {
+	std::cout << "int: " << to_print << std::endl;
+}
+
+void	ScalarConvert::printFloat(float to_print) {
+	int	to_print_int = static_cast<int>(to_print);
+
+	std::cout << "float: ";
+	if (to_print == to_print_int) {
+		std::cout << to_print << ".0f" << std::endl;
+	} else {
+		std::cout << to_print << "f" << std::endl;
+	}
+}
+
+void	ScalarConvert::printDouble(double to_print) {
+	int	to_print_int = static_cast<int>(to_print);
+
+	std::cout << "double: ";
+	if (to_print == to_print_int) {
+		std::cout << to_print << ".0" << std::endl;
+	} else {
+		std::cout << to_print << std::endl;
+	}
+}
+
 ScalarConvert::ScalarConvert() : raw_input("42"), input_type(TYPE_INT) {
 	std::cout << "ScalarConvert Default Constructor Called" << std::endl;
 }
@@ -100,15 +137,19 @@ void	ScalarConvert::printInputNType() {
 	{
 	case TYPE_CHAR:
 		std::cout << "input is Char" << std::endl;
+		strToChar();
 		break;
 	case TYPE_INT:
 		std::cout << "input is Int" << std::endl;
+		strToCInt();
 		break;
 	case TYPE_FLOAT:
 		std::cout << "input is Float" << std::endl;
+		strToFloat();
 		break;
 	case TYPE_DOUBLE:
 		std::cout << "input is Double" << std::endl;
+		strToDouble();
 		break;
 	case TYPE_INFNAN:
 		std::cout << "input is Inf(or NaN)" << std::endl;
@@ -122,6 +163,50 @@ void	ScalarConvert::printInputNType() {
 	}
 }
 
+void	ScalarConvert::strToChar() {
+	std::stringstream	ss(this->raw_input);
+	char				to_print;
+
+	ss >> to_print;
+	printChar(to_print);
+	printInt(static_cast<int>(to_print));
+	printFloat(static_cast<float>(to_print));
+	printDouble(static_cast<double>(to_print));
+}
+
+void	ScalarConvert::strToCInt() {
+	std::stringstream	ss(this->raw_input);
+	int					to_print;
+
+	ss >> to_print;
+	printChar(static_cast<char>(to_print));
+	printInt(to_print);
+	printFloat(static_cast<float>(to_print));
+	printDouble(static_cast<double>(to_print));
+
+}
+void	ScalarConvert::strToFloat() {
+	std::stringstream	ss(this->raw_input.erase(this->raw_input.find('f')));
+	float				to_print;
+
+	ss >> to_print;
+	printChar(static_cast<char>(to_print));
+	printInt(static_cast<int>(to_print));
+	printFloat(to_print);
+	printDouble(static_cast<double>(to_print));
+
+}
+void	ScalarConvert::strToDouble() {
+	std::stringstream	ss(this->raw_input);
+	double				to_print;
+
+	ss >> to_print;
+	printChar(static_cast<char>(to_print));
+	printInt(static_cast<int>(to_print));
+	printFloat(static_cast<float>(to_print));
+	printDouble(to_print);
+}
+
 ScalarConvert&	ScalarConvert::operator=(ScalarConvert const& src) {
 	std::cout << "ScalarConvert Copy Assignment Operator Called" << std::endl;
 	if (this != &src) {
@@ -133,4 +218,8 @@ ScalarConvert&	ScalarConvert::operator=(ScalarConvert const& src) {
 
 const char*	ScalarConvert::InvalidInput::what() const throw() {
 	return "the input is invalid";
+}
+
+const char*	ScalarConvert::inputOutOfRange::what() const throw() {
+	return "the input is out of range";
 }

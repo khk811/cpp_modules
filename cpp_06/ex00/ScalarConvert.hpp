@@ -2,6 +2,7 @@
 #define SCALARCONVERT_HPP
 
 #include <iostream>
+#include <sstream>
 #include <limits>
 #include <stdexcept>
 
@@ -24,14 +25,26 @@ private:
 	bool						isInputChar();
 	void						countStringComponent(int& dot, int& f, int& non_digit);
 	bool						isInputScalarType();
+	void						printChar(char to_print);
+	void						printInt(int to_print);
+	void						printFloat(float to_print);
+	void						printDouble(double to_print);
 public:
 	ScalarConvert();
 	ScalarConvert(std::string raw_arg);
 	ScalarConvert(ScalarConvert const& src);
 	~ScalarConvert();
 	void						printInputNType();
+	void	strToChar();
+	void	strToCInt();
+	void	strToFloat();
+	void	strToDouble();
 	ScalarConvert&				operator=(ScalarConvert const& src);
 	class InvalidInput : public std::exception
+	{
+		const char*				what() const throw();
+	};
+	class inputOutOfRange : public std::exception
 	{
 		const char*				what() const throw();
 	};
