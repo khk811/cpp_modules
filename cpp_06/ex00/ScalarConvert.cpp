@@ -84,7 +84,11 @@ void	ScalarConvert::printChar(char to_print) {
 }
 
 void	ScalarConvert::printInt(int to_print) {
-	std::cout << "int: " << to_print << std::endl;
+	if (isOverflow(TYPE_INT) == false) {
+		std::cout << "int: " << to_print << std::endl;
+	} else {
+		std::cout << "int: impossible" << std::endl;
+	}
 }
 
 void	ScalarConvert::printFloat(float to_print) {
@@ -106,6 +110,41 @@ void	ScalarConvert::printDouble(double to_print) {
 		std::cout << to_print << ".0" << std::endl;
 	} else {
 		std::cout << to_print << std::endl;
+	}
+}
+
+bool	ScalarConvert::isOverflow(ScalarConvert::scalar_type type) {
+	long double int_max = static_cast<long double>(std::numeric_limits<int>::max());
+	long double int_min = static_cast<long double>(std::numeric_limits<int>::lowest());
+	long double	float_max = static_cast<long double>(std::numeric_limits<float>::max());
+	long double	float_min = static_cast<long double>(std::numeric_limits<float>::lowest());
+	long double	double_max = static_cast<long double>(std::numeric_limits<double>::max());
+	long double	double_min = static_cast<long double>(std::numeric_limits<double>::lowest());
+
+	std::stringstream	ss(this->raw_input);
+	long double			to_cmp;
+
+	if (type == TYPE_INT) {
+		ss >> to_cmp;
+		if (int_min <= to_cmp && to_cmp <= int_max) {
+			return false;
+		} else {
+			return true;
+		}
+	} else if (type == TYPE_FLOAT) {
+		ss >> to_cmp;
+		if (float_min <= to_cmp && to_cmp <= float_max) {
+			return false;
+		} else {
+			return true;
+		}
+	} else {
+		ss >> to_cmp;
+		if (double_min <= to_cmp && to_cmp <= double_max) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
 
@@ -178,33 +217,46 @@ void	ScalarConvert::strToCInt() {
 	std::stringstream	ss(this->raw_input);
 	int					to_print;
 
-	ss >> to_print;
-	printChar(static_cast<char>(to_print));
-	printInt(to_print);
-	printFloat(static_cast<float>(to_print));
-	printDouble(static_cast<double>(to_print));
-
+	if (isOverflow(TYPE_INT) == false) {
+		ss >> to_print;
+		printChar(static_cast<char>(to_print));
+		printInt(to_print);
+		printFloat(static_cast<float>(to_print));
+		printDouble(static_cast<double>(to_print));
+	} else {
+		throw inputOutOfRange();
+	}
 }
+
 void	ScalarConvert::strToFloat() {
-	std::stringstream	ss(this->raw_input.erase(this->raw_input.find('f')));
+	this->raw_input = this->raw_input.erase(this->raw_input.find('f'));
+	std::stringstream	ss(this->raw_input);
 	float				to_print;
 
-	ss >> to_print;
-	printChar(static_cast<char>(to_print));
-	printInt(static_cast<int>(to_print));
-	printFloat(to_print);
-	printDouble(static_cast<double>(to_print));
+	if (isOverflow(TYPE_FLOAT) == false) {
+		ss >> to_print;
+		printChar(static_cast<char>(to_print));
+		printInt(static_cast<int>(to_print));
+		printFloat(to_print);
+		printDouble(static_cast<double>(to_print));
+	} else {
+		throw inputOutOfRange();
+	}
 
 }
 void	ScalarConvert::strToDouble() {
 	std::stringstream	ss(this->raw_input);
 	double				to_print;
 
-	ss >> to_print;
-	printChar(static_cast<char>(to_print));
-	printInt(static_cast<int>(to_print));
-	printFloat(static_cast<float>(to_print));
-	printDouble(to_print);
+	if (isOverflow(TYPE_DOUBLE) == false) {
+		ss >> to_print;
+		printChar(static_cast<char>(to_print));
+		printInt(static_cast<int>(to_print));
+		printFloat(static_cast<float>(to_print));
+		printDouble(to_print);
+	} else {
+		throw inputOutOfRange();
+	}
 }
 
 ScalarConvert&	ScalarConvert::operator=(ScalarConvert const& src) {

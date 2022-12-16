@@ -29,6 +29,7 @@ private:
 	void						printInt(int to_print);
 	void						printFloat(float to_print);
 	void						printDouble(double to_print);
+	bool						isOverflow(ScalarConvert::scalar_type type);
 public:
 	ScalarConvert();
 	ScalarConvert(std::string raw_arg);
