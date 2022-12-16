@@ -76,18 +76,23 @@ void	ScalarConvert::printChar(char to_print) {
 	int	char_ascii = static_cast<int>(to_print);
 
 	std::cout << "char: ";
-	if (33 <= char_ascii && char_ascii <= 126) {
-		std::cout << "'" << to_print << "'" << std::endl;
+	if (isOverflow(TYPE_CHAR) == false) {
+		if (33 <= char_ascii && char_ascii <= 126) {
+			std::cout << "'" << to_print << "'" << std::endl;
+		} else {
+			std::cout << "Non displayable" << std::endl;
+		}
 	} else {
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 }
 
 void	ScalarConvert::printInt(int to_print) {
+	std::cout << "int: ";
 	if (isOverflow(TYPE_INT) == false) {
-		std::cout << "int: " << to_print << std::endl;
+		std::cout << to_print << std::endl;
 	} else {
-		std::cout << "int: impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 }
 
@@ -95,10 +100,14 @@ void	ScalarConvert::printFloat(float to_print) {
 	int	to_print_int = static_cast<int>(to_print);
 
 	std::cout << "float: ";
-	if (to_print == to_print_int) {
-		std::cout << to_print << ".0f" << std::endl;
+	if (isOverflow(TYPE_FLOAT) == false) {
+		if (to_print == to_print_int) {
+			std::cout << to_print << ".0f" << std::endl;
+		} else {
+			std::cout << to_print << "f" << std::endl;
+		}
 	} else {
-		std::cout << to_print << "f" << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 }
 
@@ -106,14 +115,20 @@ void	ScalarConvert::printDouble(double to_print) {
 	int	to_print_int = static_cast<int>(to_print);
 
 	std::cout << "double: ";
-	if (to_print == to_print_int) {
-		std::cout << to_print << ".0" << std::endl;
+	if (isOverflow(TYPE_DOUBLE) == false) {
+		if (to_print == to_print_int) {
+			std::cout << to_print << ".0" << std::endl;
+		} else {
+			std::cout << to_print << std::endl;
+		}
 	} else {
-		std::cout << to_print << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 }
 
 bool	ScalarConvert::isOverflow(ScalarConvert::scalar_type type) {
+	long double char_max = static_cast<long double>(std::numeric_limits<char>::max());
+	long double char_min = static_cast<long double>(std::numeric_limits<char>::lowest());
 	long double int_max = static_cast<long double>(std::numeric_limits<int>::max());
 	long double int_min = static_cast<long double>(std::numeric_limits<int>::lowest());
 	long double	float_max = static_cast<long double>(std::numeric_limits<float>::max());
@@ -124,28 +139,28 @@ bool	ScalarConvert::isOverflow(ScalarConvert::scalar_type type) {
 	std::stringstream	ss(this->raw_input);
 	long double			to_cmp;
 
-	if (type == TYPE_INT) {
+	if (type == TYPE_CHAR) {
+		ss >> to_cmp;
+		if (char_min <= to_cmp && to_cmp <= char_max) {
+			return false;
+		}
+	} else if (type == TYPE_INT) {
 		ss >> to_cmp;
 		if (int_min <= to_cmp && to_cmp <= int_max) {
 			return false;
-		} else {
-			return true;
 		}
 	} else if (type == TYPE_FLOAT) {
 		ss >> to_cmp;
 		if (float_min <= to_cmp && to_cmp <= float_max) {
 			return false;
-		} else {
-			return true;
 		}
 	} else {
 		ss >> to_cmp;
 		if (double_min <= to_cmp && to_cmp <= double_max) {
 			return false;
-		} else {
-			return true;
 		}
 	}
+	return true;
 }
 
 ScalarConvert::ScalarConvert() : raw_input("42"), input_type(TYPE_INT) {
