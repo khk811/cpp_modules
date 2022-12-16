@@ -15,15 +15,15 @@ private:
 		TYPE_FLOAT,
 		TYPE_DOUBLE,
 		TYPE_INFNAN,
+		TYPE_INFNANF,
 		TYPE_ERROR
 	};
 	std::string					raw_input;
 	ScalarConvert::scalar_type	input_type;
-	bool						isInfNan(std::string input);
-	bool						isChar(std::string input);
-	bool						isDot(char target_char);
-	bool						isValidChar(char first_char);
-	bool						isScalarType(std::string input);
+	bool						isInputInfNan();
+	bool						isInputChar();
+	void						countStringComponent(int& dot, int& f, int& non_digit);
+	bool						isInputScalarType();
 public:
 	ScalarConvert();
 	ScalarConvert(std::string raw_arg);
