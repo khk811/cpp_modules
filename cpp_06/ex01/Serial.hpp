@@ -15,7 +15,6 @@ class Serial
 {
 private:
 	Data*	data;
-	// Data가 여기에 들어가는지 아닌지 모르겠음.
 public:
 	Serial();
 	Serial(Serial const& src);
