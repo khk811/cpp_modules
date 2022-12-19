@@ -1,5 +1,5 @@
-#ifndef MAIN_HPP
-#define MAIN_HPP
+#ifndef DERIVEDCLASS_HPP
+#define DERIVEDCLASS_HPP
 
 #include "Base.hpp"
 

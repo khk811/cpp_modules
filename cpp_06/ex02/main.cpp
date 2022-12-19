@@ -22,6 +22,7 @@ void identify(Base* p) {
 	B*		derived_b = dynamic_cast<B*>(p);
 	C*		derived_c = dynamic_cast<C*>(p);
 
+	std::cout << "\n\n---identify(base *) func()---" << std::endl;
 	if (derived_a != NULL) {
 		std::cout << "A" << std::endl;
 	} else if (derived_b != NULL) {
@@ -31,34 +32,36 @@ void identify(Base* p) {
 	}
 }
 
-//void identify(Base& p);
-// try & catch => throw exception;
-
 void identify(Base& p) {
+	std::cout << "\n\n---identify(base &) func()---" << std::endl;
 	try
 	{
 		A	is_a = dynamic_cast<A&>(p);
+		std::cout << "A\n\n" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "is not A" << std::endl;
+		e.what();
 	}
 	try
 	{
 		B	is_b = dynamic_cast<B&>(p);
+		std::cout << "B\n\n" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "is not B" << std::endl;
+		e.what();
 	}
 	try
 	{
 		C	is_c = dynamic_cast<C&>(p);
+		std::cout << "C\n\n" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "is not C" << std::endl;
+		e.what();
 	}
+	std::cout << "\n\n" << std::endl;
 }
 
 int	main(void) {
@@ -66,5 +69,7 @@ int	main(void) {
 
 	identify(test);
 	identify(*test);
+	delete test;
+	system("leaks a.out");
 	return 0;
 }
