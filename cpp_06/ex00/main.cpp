@@ -16,6 +16,7 @@ int	main(int argc, char** argv) {
 			std::cout << "\n" << std::endl;
 			std::cout << e.what() << std::endl;
 		}
+		// system("leaks convert");
 		return 0;
 	}
 	return 1;
