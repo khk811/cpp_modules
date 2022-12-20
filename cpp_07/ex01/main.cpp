@@ -1,27 +1,21 @@
 #include "iter.hpp"
 
-template<typename T, std::size_t N>
-void	iter(T* addr, size_t len, T (&arr)[N]) {
-	std::cout << "addr: " << addr << std::endl;
+template<typename T, typename F>
+void	iter(T* addr, size_t len, F func) {
 	for (size_t i = 0; i < len; i++)
 	{
-		std::cout << i << ": " << arr[i] << std::endl;
+		func(addr[i]);
 	}
 }
 
+template<typename T>
+void	printElement(T a) {
+	std::cout << a << std::endl;
+}
+
 int	main(void) {
-	int	int_arr[3] = {42, 21, 84};
+	int	int_arr[4] = {42, 21, 0, 100};
 
-	iter<int>(int_arr, 3, int_arr);
-
-
-	std::string	str_arr[4] = {"hello", "world", "42", "Seoul"};
-
-	iter<std::string>(str_arr, 4, str_arr);
-
-	float	float_arr[5] = {42.024, 3.14, 0.123, 24.042, 0.001};
-
-	iter<float>(float_arr, 5, float_arr);
-
+	iter(int_arr, 4, printElement<int>);
 	return 0;
 }
