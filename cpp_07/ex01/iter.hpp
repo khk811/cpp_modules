@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-// void	iter(T* addr, size_t len, F (*func)(T&));
-// void	iter(T* addr, size_t len, void (*func)(T&));
 template<typename T, typename F>
 void	iter(T* addr, size_t len, F func) {
 	for (size_t i = 0; i < len; i++)
@@ -20,14 +18,14 @@ void	printElement(T& a) {
 }
 
 template<typename T>
-int		printElementRetInt(T& b) {
-	std::cout << b << std::endl;
-	return 0;
+T*	printElementAddr(T& a) {
+	std::cout << &a << std::endl;
+	return &a;
 }
 
-int	plusOneToInt(int c) {
-	std::cout << c + 1 << std::endl;
-	return c + 1;
+int	plusOneToInt(int& c) {
+	c += 1;
+	return c;
 }
 
 bool	eraseCharL(std::string& target) {
