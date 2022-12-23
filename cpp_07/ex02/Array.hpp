@@ -17,6 +17,7 @@ public:
 	~Array();
 	unsigned int	size() const;
 	T&				operator[](unsigned int idx);
+	T const&		operator[](unsigned int idx) const;
 	Array&			operator=(Array const& src);
 	class IndexOutOfBound : public std::exception {
 		const char*	what() const throw();
@@ -60,6 +61,16 @@ T&	Array<T>::operator[](unsigned int idx) {
 	if (idx >= this->arr_size) {
 		throw IndexOutOfBound();
 	} else {
+		return this->arr[idx];
+	}
+}
+
+template<typename T>
+T const&	Array<T>::operator[](unsigned int idx) const {
+	if (idx >= this->arr_size) {
+		throw IndexOutOfBound();
+	} else {
+		// std::cout << "[] const op" << std::endl;
 		return this->arr[idx];
 	}
 }
