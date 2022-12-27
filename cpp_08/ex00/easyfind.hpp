@@ -9,11 +9,11 @@ class ItemCannotFound : public std::exception {
 };
 
 template <typename Container>
-int	easyfind(Container& ctain, int target) {
+typename Container::iterator	easyfind(Container& ctain, int target) {
 	for (typename Container::iterator itr = ctain.begin(); itr !=  ctain.end(); itr++)
 	{
 		if (*(itr) == target) {
-			return *(itr);
+			return itr;
 		}
 	}
 	throw ItemCannotFound();

@@ -16,7 +16,7 @@ void	test(void) {
 		int_vec.push_back(20);
 		int_vec.push_back(30);
 		int_vec.push_back(40);
-		std::cout << "easyfind result: " << easyfind(int_vec, 60) << std::endl;
+		std::cout << "easyfind result: " << *(easyfind(int_vec, 60)) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -29,7 +29,7 @@ void	test(void) {
 		int_list.push_back(100);
 		int_list.push_back(150);
 		int_list.push_back(200);
-		std::cout << "easyfind result: " << easyfind(int_list, 150) << std::endl;
+		std::cout << "easyfind result: " << *(easyfind(int_list, 150)) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
