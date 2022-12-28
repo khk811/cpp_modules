@@ -1,3 +1,3 @@
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp
 
 include ../template.mk
