@@ -32,9 +32,9 @@ public:
 };
 
 template<typename Itr>
-void					addNumber(Itr i_begin, Itr i_end) {
+void	Span::addNumber(Itr i_begin, Itr i_end) {
 	for (Itr i_itr = i_begin; i_itr != i_end; i_itr++) {
-		addNumber(*(i_itr));
+		this->addNumber(*(i_itr));
 	}
 }
 
