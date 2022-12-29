@@ -8,10 +8,8 @@ template<typename T>
 class MutantStack : public std::stack<T>
 {
 public:
-	// typedef typename (c from stack<T>)::iterator	iterator;
-	// 이런식으로 정의가 되어야 할 것 같은데 도저히 못하겠음. syntax error 어쩔꺼야
-	typedef typename std::deque<T>::iterator			iterator;
-	typedef typename std::deque<T>::reverse_iterator	reverse_iterator;
+	typedef typename std::stack<T>::container_type::iterator			iterator;
+	typedef typename std::stack<T>::container_type::reverse_iterator	reverse_iterator;
 	iterator			begin();
 	iterator			end();
 	reverse_iterator	rbegin();
