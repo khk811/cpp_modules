@@ -19,7 +19,7 @@ public:
 	~Span();
 	void				addNumber(int to_add);
 	template<typename Itr>
-	void				addNumber(Itr i_begin, Itr i_end);
+	void				addNumberByRange(Itr i_begin, Itr i_end);
 	int					shortestSpan();
 	int					longestSpan();
 	Span&				operator=(Span const& src);
@@ -32,7 +32,7 @@ public:
 };
 
 template<typename Itr>
-void	Span::addNumber(Itr i_begin, Itr i_end) {
+void	Span::addNumberByRange(Itr i_begin, Itr i_end) {
 	for (Itr i_itr = i_begin; i_itr != i_end; i_itr++) {
 		this->addNumber(*(i_itr));
 	}
