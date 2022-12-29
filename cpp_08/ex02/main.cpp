@@ -26,19 +26,19 @@ int	main(void) {
 	copy_stack.pop();
 	std::cout << copy_stack.top() << std::endl;
 
-	// MutantStack<int>::iterator it = mstack.begin();
-	// MutantStack<int>::iterator ite = mstack.end();
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
 
-	// ++it;
-	// --it;
+	++it;
+	--it;
 
-	// while (it != ite)
-	// {
-	// 	std::cout << *it << std::endl;
-	// 	++it;
-	// }
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
 
-	// std::stack<int> s(mstack);
+	std::stack<int> s(mstack);
 
 	return 0;
 }
