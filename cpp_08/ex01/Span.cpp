@@ -51,12 +51,9 @@ int		Span::shortestSpan() {
 }
 
 int		Span::longestSpan() {
-	std::vector<int>	v_sorted = this->storage;
-
-	std::sort(v_sorted.begin(), v_sorted.end());
 	if (stored_num > 1) {
-		int	max_value = *(std::max_element(v_sorted.begin(), v_sorted.end()));
-		int	min_value = *(std::min_element(v_sorted.begin(), v_sorted.end()));
+		int	max_value = *(std::max_element(this->storage.begin(), this->storage.end()));
+		int	min_value = *(std::min_element(this->storage.begin(), this->storage.end()));
 		return max_value - min_value;
 	} else {
 		throw NotEnoughNumbers();
