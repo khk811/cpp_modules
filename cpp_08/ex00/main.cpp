@@ -22,7 +22,7 @@ void	vectorSearchTest(void) {
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n" << std::endl;
 	try
@@ -38,7 +38,7 @@ void	vectorSearchTest(void) {
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n\n\n" << std::endl;
 }
@@ -57,7 +57,7 @@ void	listSearchTest(void) {
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n" << std::endl;
 	try
@@ -72,7 +72,7 @@ void	listSearchTest(void) {
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n\n\n" << std::endl;
 }
@@ -92,7 +92,7 @@ void	dequeSearchTest(void) {
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n" << std::endl;
 	try
@@ -108,7 +108,7 @@ void	dequeSearchTest(void) {
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n\n\n" << std::endl;
 }
@@ -125,7 +125,7 @@ void	dequeSearchTest(void) {
 // 	}
 // 	catch(const std::exception& e)
 // 	{
-// 		std::cerr << e.what() << '\n';
+// 		std::cout << e.what() << '\n';
 // 	}
 // }
 
