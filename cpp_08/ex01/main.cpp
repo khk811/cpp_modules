@@ -19,13 +19,13 @@ void	subjectTest(void) {
 
 void	canoniqueTest(void) {
 	std::cout << "\n\n===Orthodox Canonique form Test==\n" << std::endl;
+
+	std::cout << "---Default Constructor Test---\n" << std::endl;
+	Span default_span = Span();
 	try
 	{
-		std::cout << "---Default Constructor Test---\n" << std::endl;
-		Span default_span = Span();
 
-		default_span.addNumber(10);
-		default_span.addNumber(11);
+		default_span.addNumber(10);	// Mute this line, Test wheather the Span throw the exception;
 		std::cout << "longest span from default_span: " << default_span.longestSpan() << std::endl;
 		std::cout << "shortest span from default_span: " << default_span.shortestSpan() << std::endl;
 	}
@@ -33,33 +33,27 @@ void	canoniqueTest(void) {
 	{
 		std::cout << e.what() << std::endl;
 	}
-	try
-	{
-		std::cout << "\n---Copy Constructor & Copy Assignment Operator Test---\n" << std::endl;
-		std::vector<int>	og_vector;
 
-		og_vector.push_back(11);
-		og_vector.push_back(23);
-		og_vector.push_back(42);
-		og_vector.push_back(77);
-		og_vector.push_back(98);
+	std::cout << "\n---Copy Constructor & Copy Assignment Operator Test---\n" << std::endl;
+	std::vector<int>	og_vector;
 
-		Span	range_span = Span(static_cast<unsigned int>(og_vector.size()));
+	og_vector.push_back(11);
+	og_vector.push_back(23);
+	og_vector.push_back(42);
+	og_vector.push_back(77);
+	og_vector.push_back(98);
 
-		range_span.addNumberByRange(og_vector.begin(), og_vector.end());
-		std::cout << "longest span range_span: " << range_span.longestSpan() << std::endl;
-		std::cout << "shortest span range_span: " << range_span.shortestSpan() << std::endl;
-		std::cout << "\n" << std::endl;
+	Span	range_span = Span(static_cast<unsigned int>(og_vector.size()));
 
-		Span	copy_span = Span(range_span);
-		std::cout << "longest span copy_span: " << copy_span.longestSpan() << std::endl;
-		std::cout << "shortest span copy_span: " << copy_span.shortestSpan() << std::endl;
-		std::cout << "\n\n" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	range_span.addNumberByRange(og_vector.begin(), og_vector.end());
+	std::cout << "longest span range_span: " << range_span.longestSpan() << std::endl;
+	std::cout << "shortest span range_span: " << range_span.shortestSpan() << std::endl;
+	std::cout << "\n" << std::endl;
+
+	Span	copy_span = Span(range_span);
+	std::cout << "longest span copy_span: " << copy_span.longestSpan() << std::endl;
+	std::cout << "shortest span copy_span: " << copy_span.shortestSpan() << std::endl;
+	std::cout << "\n\n" << std::endl;
 }
 
 void	goCrazyTest(void) {
