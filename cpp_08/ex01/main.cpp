@@ -21,12 +21,13 @@ void	canoniqueTest(void) {
 	std::cout << "\n\n===Orthodox Canonique form Test==\n" << std::endl;
 	try
 	{
+		std::cout << "---Default Constructor Test---\n" << std::endl;
 		Span default_span = Span();
 
 		default_span.addNumber(10);
 		default_span.addNumber(11);
-		std::cout << default_span.longestSpan() << std::endl;
-		std::cout << default_span.shortestSpan() << std::endl;
+		std::cout << "longest span from default_span: " << default_span.longestSpan() << std::endl;
+		std::cout << "shortest span from default_span: " << default_span.shortestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -34,6 +35,7 @@ void	canoniqueTest(void) {
 	}
 	try
 	{
+		std::cout << "\n---Copy Constructor & Copy Assignment Operator Test---\n" << std::endl;
 		std::vector<int>	og_vector;
 
 		og_vector.push_back(11);
@@ -42,7 +44,7 @@ void	canoniqueTest(void) {
 		og_vector.push_back(77);
 		og_vector.push_back(98);
 
-		Span	range_span = Span(og_vector.size());
+		Span	range_span = Span(static_cast<unsigned int>(og_vector.size()));
 
 		range_span.addNumberByRange(og_vector.begin(), og_vector.end());
 		std::cout << "longest span range_span: " << range_span.longestSpan() << std::endl;
@@ -76,7 +78,8 @@ void	goCrazyTest(void) {
 	std::cout << "duck_deque[1234]: " << duck_deque[1234] << std::endl;
 	std::cout << "duck_deque[9999]: " << duck_deque[9999] << std::endl;
 	std::cout << "\n\n" << std::endl;
-	Span	crazy_span = Span(10000);
+
+	Span	crazy_span = Span(static_cast<unsigned int>(duck_deque.size()));
 
 	crazy_span.addNumberByRange(duck_deque.begin(), duck_deque.end());
 	try
@@ -89,10 +92,10 @@ void	goCrazyTest(void) {
 	{
 		std::cout << e.what() << "\n\n" << std::endl;
 	}
-	std::cout << "longestSpan() from duck_deque(size 10000): " << crazy_span.longestSpan() << std::endl;
-	std::cout << "shortestSpan() from duck_deque(size 10000): " << crazy_span.shortestSpan() << std::endl;
+	std::cout << "longestSpan() from crazy_span(size 10000): " << crazy_span.longestSpan() << std::endl;
+	std::cout << "shortestSpan() from crazy_span(size 10000): " << crazy_span.shortestSpan() << std::endl;
 
-	std::cout << "\n\n---you think this is not enough? => Test with 20000 numbers---\n" << std::endl;
+	std::cout << "\n\n---Test with 20000 numbers---\n" << std::endl;
 	for (size_t i = 0; i < 10000; i++)
 	{
 		duck_deque.push_back(rand());
@@ -103,7 +106,8 @@ void	goCrazyTest(void) {
 	std::cout << "duck_deque[12345]: " << duck_deque[12345] << std::endl;
 	std::cout << "duck_deque[19999]: " << duck_deque[19999] << std::endl;
 	std::cout << "\n\n" << std::endl;
-	Span	double_crazy_span = Span(20000);
+
+	Span	double_crazy_span = Span(static_cast<unsigned int>(duck_deque.size()));
 
 	double_crazy_span.addNumberByRange(duck_deque.begin(), duck_deque.end());
 	try
@@ -116,8 +120,9 @@ void	goCrazyTest(void) {
 	{
 		std::cout << e.what() << "\n\n" << std::endl;
 	}
-	std::cout << "longestSpan() from duck_deque(size 20000): " << double_crazy_span.longestSpan() << std::endl;
-	std::cout << "shortestSpan() from duck_deque(size 20000): " << double_crazy_span.shortestSpan() << std::endl;
+	std::cout << "longestSpan() from double_crazy_span(size 20000): " << double_crazy_span.longestSpan() << std::endl;
+	std::cout << "shortestSpan() from double_crazy_span(size 20000): " << double_crazy_span.shortestSpan() << std::endl;
+	std::cout << "\n\n" << std::endl;
 }
 
 int	main(void) {

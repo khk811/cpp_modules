@@ -49,6 +49,7 @@ void	subjectMutantStackTest(void) {
 	{
 		std::cout << *it << std::endl;
 	}
+	std::cout << "\n\n" << std::endl;
 }
 
 void	subjectListTest(void) {
@@ -92,9 +93,46 @@ void	subjectListTest(void) {
 	}
 }
 
+void	extraTest(void) {
+	std::cout << "\n\n===Extra Test: MutantStack with std::string===\n" << std::endl;
+	MutantStack<std::string>	string_mutant_stack;
+
+	string_mutant_stack.push("Hello");
+	string_mutant_stack.push("World");
+	string_mutant_stack.push("42 Seoul");
+
+	std::cout << "\n\n---print element with const_iterator---\n" << std::endl;
+	for (MutantStack<std::string>::const_iterator c_itr = string_mutant_stack.begin();\
+	 c_itr != string_mutant_stack.end(); c_itr++)
+	{
+		std::cout << "=> " << *(c_itr) << std::endl;
+	}
+	std::cout << "\n\n---print element with const_reverse_iterator---\n" << std::endl;
+	for (MutantStack<std::string>::const_reverse_iterator c_ritr = string_mutant_stack.rbegin();\
+	 c_ritr != string_mutant_stack.rend(); c_ritr++)
+	{
+		std::cout << "=> " << *(c_ritr) << std::endl;
+		// *(c_ritr) = "*"; // Error: method is not marked const
+	}
+	std::cout << "\n\n=> Modifying MutantStack elements with iterator: Elements change to '*'" << std::endl;
+	for (MutantStack<std::string>::iterator itr = string_mutant_stack.begin();\
+	 itr != string_mutant_stack.end(); itr++)
+	{
+		*(itr) = "*";
+	}
+	std::cout << "\n\n---print element reverse_iterator---\n" << std::endl;
+	for (MutantStack<std::string>::reverse_iterator ritr = string_mutant_stack.rbegin();\
+	 ritr != string_mutant_stack.rend(); ritr++)
+	{
+		std::cout << *(ritr) << std::endl;
+	}
+	std::cout << "\n\n" << std::endl;
+}
+
 int	main(void) {
 	subjectMutantStackTest();
 	subjectListTest();
+	extraTest();
 	std::cout << "\n\n===Check Memory Leaks===\n" << std::endl;
 	system("leaks a.out");
 	return 0;
